@@ -171,7 +171,7 @@
                         <contextPath>/spring</contextPath>
                     </webApp>
                     <stopKey>STOP</stopKey>
-                    <stopPort>8080</stopPort>
+                    <stopPort>8081</stopPort>
                 </configuration>
             </plugin>
 
