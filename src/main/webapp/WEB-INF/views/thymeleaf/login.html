@@ -4,40 +4,50 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Taller Web I</title>
+    <title>Ingresar</title>
 
-    <!-- Boostrap core css -->
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}"/>
-
+    <!--    antes de mandar el html al server se debe resolver el th.-->
+    <!--    datos de este html se van a completar con datos que vienen de java. th indica eso.-->
     <!-- custom style -->
-    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" th:href="@{/css/login.css}"/>
+    <!-- agregar la hoja de estilos de login y nuevo usuario-->
 
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">UNLAM</a>
-</nav>
+<main>
 
-<main role="main" class="container">
+    <div class="contenedor_principal">
+        <h3>Patria en juego</h3>
+        <div class="caja_de_login">
+            <div class="titulo_ingresar"><h2>Ingresar</h2></div>
 
-    <div class = "container">
-        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <form action="#" th:action="@{/validar-login}" method="POST" th:object="${datosLogin}">
-                <h3 class="form-signin-heading">Taller Web I</h3>
-                <hr class="colorgraph"><br>
+                <!--object dice q modelo va a reicibir paraa llenar el form. Es el que está en el request mapping con url login. linea 26 en el controlador.-->
+                <div class="inputs">
+                    <!--set de email en este input. por eso tienen qe estar los getters y setters-->
+                    <label for="email">
+                        <input th:field="*{email}" id="email" type="email" class="campos" required
+                               placeholder="E-mail"/>
+                    </label>
+                    <label for="password">
+                    <input th:field="*{password}" type="password" id="password" class="campos" required
+                           placeholder="Contraseña"/>
+                    </label>
+                </div>
 
-                <input th:field="*{email}" id="email" type="email" class="form-control" required/>
-                <input th:field="*{password}" type="password" id="password" class="form-control" required/>
-
-                <button id="btn-login" class="btn btn-lg btn-primary btn-block" Type="Submit">Login</button>
-
-                <p th:if="${error != null}" class="alert alert-danger" th:text="'Error ' + ${error}">
+                <div>
+                    <button class="boton_ingresar" Type="Submit">Ingresar</button>
+                </div>
+                <!--se muestra si se cumple la condicion. s va a mostrar thtext. el error lo saca del controlador-->
+                <p th:if="${error != null}" class="mensaje_error" th:text="'Error ' + ${error}">
                 </p>
             </form>
-            <a id="ir-a-registrarme" href="nuevo-usuario">Registrarme</a>
+
+
         </div>
+        <a th:href="@{/home}" class="boton_de_volver">Volver</a>
     </div>
 </main>
 <!-- /.container -->

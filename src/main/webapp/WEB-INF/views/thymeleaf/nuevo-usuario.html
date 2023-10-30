@@ -4,32 +4,47 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Taller Web I</title>
+  <title>Registrarse</title>
 
-  <!-- Boostrap core css -->
-  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}"/>
 
   <!-- custom style -->
-  <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+  <link rel="stylesheet" th:href="@{/css/nuevo-usuario.css}"/>
+  <!-- Boostrap core css -->
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}"/>
+=======
+  <link rel="stylesheet" th:href="@{/css/estilos_comunes_registro_inicio_sesion.css}"/>
+
 
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">UNLAM</a>
-</nav>
+<header class="encabezado">
+  <h3>Patria en Juego</h3>
+  <img src="#" alt="pfilUser" th:src="@{/img/}">
+</header>
 
-<main role="main" class="container">
+<main>
 
-  <div class = "container">
-    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-      <form action="#" th:action="@{/registrarme}" method="POST" th:object="${usuario}">
-        <h3 class="form-signin-heading">Nuevo Usuario</h3>
-        <hr class="colorgraph"><br>
 
-        <input th:field="*{email}" id="email" class="form-control" required/>
-        <input th:field="*{password}" type="password" id="password" class="form-control" required/>
+  <div class = "contenedor_principal">
+    <h3>Patria en juego</h3>
+    <div class ="titulo_ingresar"><h2>Registrarse</h2></div>
+    <div id="caja_de_registro">
+      <form action="#" th:action="@{/registrar}" method="POST" th:object="${datosRegistro}">
+
+        <label for="email">
+        <input th:field="*{email}" id="email" required placeholder="E-mail"/>
+        </label>
+
+        <label for="password">
+        <input th:field="*{contrasenia}" type="password" id="password" required placeholder="Creá tu contraseña"/>
+        </label>
+
+        <label for="password_repetida">
+          <input th:field="*{contraseniaRepetida}" type="password" id="password_repetida" required placeholder="Repetí la contraseña"/>
+        </label>
 
         <button id="btn-registrarme" class="btn btn-lg btn-primary btn-block" Type="Submit">Registrarme</button>
         <p th:if="${error != null}" class="alert alert-danger" th:text="'Error ' + ${error}">

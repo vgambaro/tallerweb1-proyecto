@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Patria en Juego--Home</title>
+<!-- custom style -->
+<link rel="stylesheet" th:href="@{/css/inicio.css}" />
+<!-- Boostrap core css -->
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}" />
+
+</head>
+
+<body>
+	<header class="encabezado">
+		<h3>Patria en Juego</h3>
+		<img src="#" alt="pfilUser"
+			th:src="@{/src/main/webapp/resources/core/img/fondo-home.png}">
+
+	</header>
+	<main class="container">
+
+		<section class="columnas">
+
+			<div class="caja-pr-mayor">
+				<p class="titulo">LAS PROVINCIAS A CONQUISTAR :</p>
+				<div class="caja-prov">
+
+					<ul class="list-group">
+						<li class=" nivel-pintado">Tierra del Fuego</li>
+						<li
+							th:classappend="${nivelActual>= 2 ? 'nivel-pintado' : 'nivel'}">Santa
+							Cruz</li>
+						<li
+							th:classappend="${nivelActual>= 3 ? 'nivel-pintado' : 'nivel'}">Chubut</li>
+						<li
+							th:classappend="${nivelActual>= 4 ? 'nivel-pintado' : 'nivel'}">Río
+							Negro</li>
+						<li
+							th:classappend="${nivelActual>= 5 ? 'nivel-pintado' : 'nivel'}">La
+							pampa</li>
+						<li
+							th:classappend="${nivelActual>= 6 ? 'nivel-pintado' : 'nivel'}">Neuquen</li>
+						<li
+							th:classappend="${nivelActual>= 7 ? 'nivel-pintado' : 'nivel'}">Mendoza</li>
+						<li
+							th:classappend="${nivelActual>= 8 ? 'nivel-pintado' : 'nivel'}">Buenos
+							Aires</li>
+						<li
+							th:classappend="${nivelActual>= 9 ? 'nivel-pintado' : 'nivel'}">CABA</li>
+						<li
+							th:classappend="${nivelActual>= 10 ? 'nivel-pintado' : 'nivel'}">San
+							Luis</li>
+						<li
+							th:classappend="${nivelActual>= 11? 'nivel-pintado' : 'nivel'}">Córdoba</li>
+						<li
+							th:classappend="${nivelActual>= 12 ? 'nivel-pintado' : 'nivel'}">San
+							Juan</li>
+					</ul>
+
+				</div>
+				<div>
+					<ul class="list-group">
+						<li
+							th:classappend="${nivelActual>= 13 ? 'nivel-pintado' : 'nivel'}">La
+							Rioja</li>
+						<li
+							th:classappend="${nivelActual>= 14 ? 'nivel-pintado' : 'nivel'}">Catamarca</li>
+						<li
+							th:classappend="${nivelActual>= 15? 'nivel-pintado' : 'nivel'}">Tucuman</li>
+						<li
+							th:classappend="${nivelActual>= 16 ? 'nivel-pintado' : 'nivel'}">Santiago
+							del Estero</li>
+						<li
+							th:classappend="${nivelActual>= 17 ? 'nivel-pintado' : 'nivel'}">Santa
+							Fe</li>
+						<li
+							th:classappend="${nivelActual>= 18 ? 'nivel-pintado' : 'nivel'}">Entre
+							Rios</li>
+						<li
+							th:classappend="${nivelActual>= 19 ? 'nivel-pintado' : 'nivel'}">Corrientes</li>
+						<li
+							th:classappend="${nivelActual>= 20 ? 'nivel-pintado' : 'nivel'}">Misiones</li>
+						<li
+							th:classappend="${nivelActual>= 21 ? 'nivel-pintado' : 'nivel'}">Chaco</li>
+						<li
+							th:classappend="${nivelActual>= 22 ? 'nivel-pintado' : 'nivel'}">Formosa</li>
+						<li
+							th:classappend="${nivelActual>= 23 ? 'nivel-pintado' : 'nivel'}">Salta</li>
+						<li
+							th:classappend="${nivelActual>= 24 ? 'nivel-pintado' : 'nivel'}">Jujuy</li>
+					</ul>
+
+
+				</div>
+			</div>
+			<div class="contenedor-accion-juego">
+
+				<!-- USO th:text Para reemplazar el nombre
+        de la prov con el nombre de la que se está
+        jugando actualmente -->
+				<p>Actualmente estás recuperando</p>
+				<!-- th:text--FALTA LOG -->
+				<p th:text="${provinciaActual}">Tierra del Fuego</p>
+				<input type="button" value="¡Ir a la batalla!" class="boton-batalla">
+
+				<div class="frase">
+					<p>--Si los pueblos no se ilustran, si no se divulgan sus
+						derechos, si cada hombre no conoce lo que puede, vale y debe,
+						nuevas ilusiones sucederán a las antiguas y será tal vez nuestra
+						suerte cambiar de tiranos sin destruir la tiranía--</p>
+					<p>Mariano Moreno</p>
+					
+					<p class="mt">¿Querés colaborar con la historia?</p>
+					<input type="button" value="Cargar Preguntas" class="boton-batalla" th:href="@{/cargarPregunta.html}>
+
+				</div>
+
+			</div>
+		</section>
+	</main>
+	<footer>
+		<p>Unlam--DII T2023</p>
+		<p>Gambaro,Moscovich,Pereyra,Zara</p>
+
+	</footer>
+</body>
+</html>

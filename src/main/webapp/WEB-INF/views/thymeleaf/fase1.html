@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Patria en Juego--Fase 01</title>
+    <!-- custom style -->
+    <link rel="stylesheet" th:href="@{/css/fase1.css}"/>
+    <!-- Boostrap core css -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header class="encabezado">
+    <h3>Patria en Juego</h3>
+    <img src="#" alt="pfilUser" th:src="@{/img/}">
+</header>
+
+<main>
+    <div class="tiempito">
+        <p> <span th:text="${contador}">00:00</span></p>
+    </div>
+<div class="cajita">
+    <h1>ANTES DE LA BATALLA. . .</h1>
+    <form method="post" action="#" >
+    <!-- th:text--FALTA PREGUNTA ACTUAL -->
+    <p th:text="${preguntaActual}">El sistema te está haciendo una pregunta</p>
+    <p>Pregunta actual para saber si vas a ganar puntitos extra</p>
+    <input type="text" name="respuesta" id="respuesta">
+    </form>
+</div>
+</main>
+<footer>
+    <p> Unlam--DII T2023</p>
+    <p>Gambaro,Moscovich,Pereyra,Zara</p>
+
+</footer>
+</body>
+</html>

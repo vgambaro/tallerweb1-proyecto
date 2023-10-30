@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- custom style -->
+<link rel="stylesheet" th:href="@{/css/fase03.css}" />
+<title>Fase 3</title>
+
+</head>
+<body>
+	<header>
+
+		<div class="caja-header">
+
+			<div class="caja-tiempo">
+				<!--este lo comente porque el navegador no me lo agarraba y lo necesitaba para maquetar-->
+				<!-- tiempo para resolver -->
+				<!--      <p th:text="${tiempoRestante}">holi</p>-->
+				<p>tiempo restante</p>
+			</div>
+
+			<div class="caja-estrellas">
+				<!-- estrellas, no se si son vidas, funcion a resolver luego -->
+				<img src="#" th:src="@{/img/estrella.png}" alt="estrella"> <img
+					src="#" th:src="@{/img/estrella.png}" alt="estrella">
+			</div>
+
+		</div>
+
+	</header>
+
+	<main>
+
+		<!-- caja principal -->
+		<section class="caja-principal">
+			<!--preguntas -->
+			<div class="caja-preguntaYopciones">
+
+
+
+
+				<h2 class="preguntaTexto">¿Cuál es la capital de CABA?</h2>
+
+				<form>
+					<button class="respuesta">No existe,CABA es na capital</button>
+					<button class="respuesta">La Boca</button>
+					<button class="respuesta">Puerto Madero</button>
+					<button class="respuesta">Palermo</button>
+				</form>
+
+			</div>
+			<!--imagen provincia -->
+
+			<div class="caja-imagen-provicia">
+				<img src="/img/salta.png" alt="imgSalta" th:src="@{/img/salta.png}">
+
+			</div>
+		</section>
+
+		<div class="caja-jefe">
+			<p>Derrotando al JEFE</p>
+			<!-- imagen jefe, probar con o sin div-->
+
+		</div>
+
+	</main>
+
+</body>
+</html>

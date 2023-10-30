@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Patria en Juego--cargar Preguntas</title>
+<!-- custom style -->
+<link rel="stylesheet" th:href="@{/css/cargarPreguntas.css}" />
+<!-- Boostrap core css -->
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}" />
+
+</head>
+
+<body>
+	<header class="encabezado">
+		<h3>Patria en Juego</h3>
+		<img src="#" alt="pfilUser"
+			th:src="@{/src/main/webapp/resources/core/img/fondo-home.png}">
+	</header>
+	<main>
+
+
+
+
+
+
+		<h2>ARMA TU PREGUNTA</h2>
+		<form action="#" th:action="@{/guardarPregunta}" method="POST"
+			th:object="${pregunta}">
+			<!--INPUT PARA INGRESAR LA PREGUNTA-->
+			<label for="descripcion">Ingresa tu pregunta <input
+				th:field="*{descripcion}" id="descripcion" required
+				placeholder="¿De qué color era el caballo blanco de San Martin?" />
+			</label>
+			<!--SELECCIONE LAS PREGUNTAS-->
+			<label for="nivel"> <select th:field="*{nivel}" id="nivel"
+				required>
+					<option value="">Selecciona un nivel</option>
+					<option
+						th:each="provincia : ${T(com.tallerwebi.dominio.Nivel).values()}"
+						th:value="${provincia}" th:text="${provincia}"></option>
+			</select>
+			</label>
+			<!--SELECCIONAR FASE-->
+			<label for="fase">¿Para qué fase es tu pregunta? <select
+				th:field="*{fase}" id="fase" required>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+			</select>
+			</label>
+			<!--ENVIAR FORM-->
+			<div>
+				<button class="boton" Type="Submit">Enviar mi pregunta</button>
+			</div>
+			<p th:if="${error != null}" class="mensaje_error"
+				th:text="'Error ' + ${error}"></p>
+
+		</form>
+
+		</div>
+		<a th:href="@{/home}" class="boton_de_volver">Volver</a>
+		</div>
+	</main>
+
+</body>
+</html>

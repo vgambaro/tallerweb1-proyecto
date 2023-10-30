@@ -4,32 +4,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Taller Web I</title>
-
-  <!-- Boostrap core css -->
-  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}"/>
+  <title>Taller Web I- Patria en Juego - Inicio</title>
 
   <!-- custom style -->
-  <link rel="stylesheet" th:href="@{/css/main.css}"/>
+  <link rel="stylesheet" th:href="@{/css/home.css}"/>
 
 </head>
 
-<body>
+<body class="fondo-home">
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">UNLAM</a>
-</nav>
+<main role="main" class="container ">
 
-<main role="main" class="container">
-  <div class = "container">
-    <h1>Bienvenidos a Taller Web 1</h1>
+  <div class = "contenedor">
+    <h1>Patria en Juego</h1>
+    <p>recuperando nuestra historia</p>
+    <div class = "container botones">
+      <a th:href="@{/login.html}">Login</a>
+      <a th:href="@{/registrarse.html}">Registrarse</a>
+    </div>
+    <p th:if="${registroExitoso != null}" class="mensaje_error" th:text="${registroExitoso}">
+    </p>
+    </div>
 
-    <a href="login.html" class="btn btn-lg btn-primary btn-block">Volver</a>
-  </div>
+
 </main>
 <!-- /.container -->
 
-<!-- Boostrap core js -->
-<script type="text/javascript" th:src="@{webjars/bootstrap/5.2.0/js/bootstrap.min.js}"></script>
 </body>
 </html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Patria en Juego--Fase 02</title>
+<!-- custom style -->
+<link rel="stylesheet" th:href="@{/css/fase02.css}" />
+<!-- Boostrap core css -->
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}" />
+
+</head>
+<body>
+	<header class="encabezado">
+		<h3>Patria en Juego</h3>
+		<img src="#" alt="pfilUser" th:src="@{/img/}">
+	</header>
+
+	<main>
+		<div class="tiempito">
+			<p>
+				<span th:text="${contador}">00:00</span>
+			</p>
+		</div>
+		<div class="contenedor">
+			<!-- Div de la izquierda con la pregunta y respuestas -->
+			<div class="pregunta">
+				<h2 class="preguntaTexto">¿Cuál es la capital de Francia?</h2>
+				<div class="respuesta">París</div>
+				<div class="respuestaCorrecta">Londres</div>
+				<div class="respuesta">Madrid</div>
+				<div class="respuesta">Berlín</div>
+			</div>
+
+			<!-- Línea vertical que divide los divs -->
+			<div class="linea-vertical"></div>
+
+			<!-- Div de la derecha con la imagen -->
+			<div class="imagen">
+				<img src="/img/salta.png" alt="imgSalta" th:src="@{/img/salta.png}">
+			</div>
+
+		</div>
+
+		<h1>FASE DOS: DERROTANDO A LOS SOLDADOS</h1>
+
+	</main>
+	<footer>
+		<p>Unlam--DII T2023</p>
+		<p>Gambaro,Moscovich,Pereyra,Zara</p>
+
+	</footer>
+</body>
+</html>

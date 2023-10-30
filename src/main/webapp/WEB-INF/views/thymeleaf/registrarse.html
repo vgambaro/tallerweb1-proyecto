@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Registrarse</title>
+
+    <!-- custom style -->
+    <link rel="stylesheet" th:href="@{/css/registrarse.css}"/>
+
+</head>
+
+<body>
+
+<main>
+
+    <div class="contenedor_principal">
+        <h3>Patria en juego</h3>
+        <div class="caja_de_registro">
+            <div class="titulo_registrarse"><h2>Registrarse</h2></div>
+            <form action="#" th:action="@{/registrarse}" method="POST" th:object="${datosRegistro}">
+                <div class="inputs">
+                    <label for="email">
+                        <input th:field="*{email}" id="email" required placeholder="E-mail"/>
+                    </label>
+
+                    <label for="password">
+                        <input th:field="*{password}" type="password" id="password" required
+                               placeholder="Creá tu contraseña"/>
+                    </label>
+
+                    <label for="password_repetida">
+                        <input th:field="*{passwordRepetida}" type="password" id="password_repetida" required
+                               placeholder="Repetí la contraseña"/>
+                    </label>
+                </div>
+
+                <div>
+                    <button class="boton_registrarse" Type="Submit">Registrarse</button>
+                </div>
+                <p th:if="${error != null}" class="mensaje_error" th:text="'Error ' + ${error}">
+                </p>
+            </form>
+
+        </div>
+        <a th:href="@{/home}" class="boton_de_volver">Volver</a>
+    </div>
+
+</main>
+<!-- /.container -->
+
+<!-- Boostrap core js -->
+<script type="text/javascript" th:src="@{webjars/bootstrap/5.2.0/js/bootstrap.min.js}"></script>
+</body>
+</html>
