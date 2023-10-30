@@ -1,0 +1,39 @@
+@import
+	url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap')
+	;
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap')
+	;
+
+/*
+rosita: F89C9C
+verde: 408059
+celeste: 3ECFE3
+marron: 301919*/
+body {
+	width: 100%;
+	margin: 0;
+	font-family: 'Nunito', sans-serif;
+	background-image: url("../img/fondo-home.png");
+	box-sizing: border-box;
+	/*background-color:#F89C9C;*/
+}
+
+.encabezado {
+	background-color: #F89C9C;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.encabezado img {
+	border-radious: 50%;
+}
+
+h3 {
+	color: #301919;
+	font-family: 'Love Ya Like A Sister', cursive;
+	font-size: 4.375em;
+	margin: 1%;
+}

@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+
+
+/*
+rosita: F89C9C
+verde: 408059
+celeste: 3ECFE3
+marron: 301919*/
+
+body {
+    width: 100%;
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background-image: url("../img/fondo-home.png");
+    box-sizing: border-box;
+    background: rgb(246,126,126);
+    background: linear-gradient(164deg, rgba(246,126,126,1) 13%, rgba(252,147,147,1) 57%, rgba(249,169,169,1) 97%);
+    /*background-color:#F89C9C;*/
+}
+
+
+.encabezado {
+    background-color: #F89C9C;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.encabezado img {
+    border-radious: 50%;
+
+}
+h1{
+    color: #1c0f0f;
+    font-family: 'Love Ya Like A Sister', cursive;
+}
+h3 {
+    color: #301919;
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: 4.375em;
+    margin: 1%;
+}
+
+.cajita{
+    background-color: white;
+    margin: 10%;
+    padding: 5%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+input{
+    border: none;
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background-color: #3ECFE3;
+    line-height: inherit;
+    padding: 5%;
+    width: 50%;
+    border-radius: 10px;
+
+}
+
+.tiempito{
+    background-color: #408059;
+    border-radius: 10px;
+    display: flex;
+    width: 20%;
+    margin-left: 5%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+footer{
+    background-color: #3ECFE3;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    font-size: 10px;
+    align-content: center;
+    align-items: center;
+    /* margin-top: 2%; */
+    font-weight: 800;
+}
+
+footer p{
+    margin:2%;
+}
+

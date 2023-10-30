@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+
+body{
+    background-color: #ceedf1;
+    font-family: 'Nunito', sans-serif;
+}
+h3{
+    font-family: 'Love Ya Like A Sister', cursive;
+    color: #301919;
+}
+.titulo_registrarse{
+    background-color:#ffffff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px 5px 0px 0px;
+}
+.inputs{
+    background-color: #f89c9c;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px 10px 0px 0px;
+    align-items: center;
+}
+
+.inputs>input{
+    margin: 15px;
+}
+
+button{
+    background-color: #408059;
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+    top: -9px;
+    border-style: none;
+    padding: 15px;
+    margin: 0;
+}
+.contenedor_principal{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.caja_de_registro{
+    width: 500px;
+    box-shadow: 10px 10px 34px -13px rgba(0,0,0,0.75);
+}
+
+.boton_de_volver{
+    text-decoration: none;
+    color: black;
+}

@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+
+body{
+    background-color: #ceedf1;
+    font-family: 'Nunito', sans-serif;
+}
+h3{
+    font-family: 'Love Ya Like A Sister', cursive;
+    color: #301919;
+}
+
+
+form{
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    top: -9px;
+}
+
+
+
+
+
+.inputs>label{
+    margin: 3%;
+    border-radius:10px;
+}
+
+
+
+.contenedor_principal{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.caja_de_login {
+    display: flex;
+    box-sizing: border-box;
+    width: 80%;
+    box-shadow: 10px 10px 34px -13px rgba(0,0,0,0.75);
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color:pink;
+}
+
+.titulo_ingresar {
+    display: block;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10%;
+    border-radius: 5px 5px 0px 0px;
+}
+.inputs {
+    background-color: #f89c9c;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 6%;
+    top: -15px;
+    border-radius: 10px 10px 0px 0px;
+    align-items: center;
+    z-index: 555;
+}
+.campos{
+    margin: 3%;
+    border-radius:10px;
+}
+
+
+button{
+    background-color: #408059;
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+    top: -9px;
+    border-style: none;
+    padding: 5%;
+    margin: 0;
+}
+
+button :hover{
+    background-color: #78b991;
+}
+
+.boton_de_volver{
+    text-decoration: none;
+    color: black;
+    margin:5%;
+    background-color: #8de6f1;border-radius:10px;
+}
+
+.boton_de_volver{
+    color:white;
+    background-color: rgba(62, 146, 162, 0.4)
+}

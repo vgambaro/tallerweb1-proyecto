@@ -1,0 +1,163 @@
+@import
+	url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap')
+	;
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap')
+	;
+
+/*
+rosita: F89C9C
+verde: 408059
+celeste: 3ECFE3
+marron: 301919*/
+body {
+	width: 100%;
+	margin: 0;
+	font-family: 'Nunito', sans-serif;
+	background-image: url("../img/fondo-home.png");
+	box-sizing: border-box;
+	/*background-color:#F89C9C;*/
+}
+
+.columnas {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.encabezado {
+	background-color: #F89C9C;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.encabezado img {
+	border-radious: 50%;
+}
+
+h3 {
+	color: #301919;
+	font-family: 'Love Ya Like A Sister', cursive;
+	font-size: 4.375em;
+	margin: 1%;
+}
+
+.contenedor-accion-juego {
+	display: flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-size: 20px;
+	text-align: center;
+}
+
+.boton-batalla {
+	background-color: #F89C9C;
+	border: none;
+	color: white;
+	border-radius: 10px;
+	padding: 3%;
+	border-radious: 20%;
+	margin-top: 2%;
+}
+
+.boton-batalla:hover {
+	background-color: #f67e7e;
+	transition: 0.6s
+}
+
+.caja-pr-mayor {
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center; align-content : center;
+	justify-content: center;
+	align-items: center;
+	background-color: #5dcd99;
+	margin: 7%;
+	border-radius: 10px;
+	align-content: center;
+}
+
+.titulo {
+	font-family: 'Love Ya Like A Sister', cursive;
+	font-size: 50px;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: 2%;
+	background-color: #5dcd99;
+}
+
+.caja-prov {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-bottom: 5%;
+	text-align: center;
+	justify-content: center;
+}
+
+.nivel {
+	text-decoration: none;
+	list-style-type: none;
+	text-transform: uppercase;
+	font-weight: bolder;
+	background-color: beige;
+	border-radius: 20px;
+	box-sizing: border-box;
+	padding: 5%;
+	width: 90%;
+	margin: 5%;
+	font-size: 10px;
+}
+
+.caja-prov li:hover {
+	color: #408059;
+	background-color: #f6f6b5;
+}
+
+.frase {
+	margin-top: 5%;
+	font-size: 12px;
+	color: #301919;
+	text-align: center;
+	font-style: italic;
+}
+
+.nivel-pintado {
+	text-decoration: none;
+	list-style-type: none;
+	text-transform: uppercase;
+	font-weight: bolder;
+	background-color: #3ECFE3;
+	border-radius: 20px;
+	box-sizing: border-box;
+	padding: 5%;
+	width: 90%;
+	margin: 5%;
+	font-size: 10px;
+}
+.nivel-pintado :hover{
+		color: white;
+	background-color: #70d9e8;
+}
+.mt{
+	margin:2%;
+}
+
+footer {
+	background-color: #3ECFE3;
+	color: white;
+	display: flex;
+	justify-content: space-around;
+	font-size: 10px;
+	align-content: center;
+	align-items: center;
+	/* margin-top: 2%; */
+	font-weight: 800;
+}
+
+footer p {
+	margin: 2%;
+}

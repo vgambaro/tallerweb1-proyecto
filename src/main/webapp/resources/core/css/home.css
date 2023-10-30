@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+
+/*
+rosita: F89C9C
+verde: 408059
+celeste: 3ECFE3
+marron: 301919*/
+
+body {
+    width:100%;
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background-image: url("../img/fondo-home.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: fixed;
+}
+main{
+    margin:auto;
+}
+
+.contenedor{
+    display:flex;
+    justify-content:center;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 9%;
+}
+
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+h1 {
+    color: #301919;
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size:4.375em;
+}
+
+h2 {
+    color: #FF0000;
+}
+
+.navbar-brand{
+    margin:0 2rem;
+}
+
+p{
+    font-size:1.875em;
+}
+.navbar-brand {
+    margin: 0 2rem;
+}
+
+.botones{
+    display: flex;
+    gap: 5%;
+    justify-content: center;
+}
+
+.botones a{
+    text-decoration: none;
+    color: white;
+    background-color: #408059;
+    border-radius: 3.125em;
+    box-sizing: border-box;
+    padding: 2%;
+    width: 25%;
+}
+
+.botones a:hover{
+    color: #e7e4e4;
+    background-color: #19522f;
+    transition:0.6s;
+}
+
