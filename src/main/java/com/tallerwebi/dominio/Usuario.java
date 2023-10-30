@@ -14,6 +14,7 @@ public class Usuario {
     private String email;
     private String password;
     private String rol;
+    private Integer nivel;
     private Boolean activo = false;
 
     public Long getId() {
@@ -53,5 +54,13 @@ public class Usuario {
 
     public void activar() {
         activo = true;
+    }
+
+    public Integer  getNivel() {
+        return this.nivel;
+    }
+
+    public void  setNivel(Integer  nuevo) {
+         this.nivel=nuevo;
     }
 }

@@ -34,5 +34,11 @@ public class ServicioLoginImpl implements ServicioLogin {
         repositorioUsuario.guardar(usuario);
     }
 
+	@Override
+	public Integer consultarNivelActual(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
 
