@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.tallerwebi.dominio.Pregunta;
 import com.tallerwebi.dominio.RepositorioPregunta;
+import com.tallerwebi.dominio.Respuesta;
 import com.tallerwebi.dominio.ServicioInicio;
 
 @Service("servicioInicio")
@@ -23,16 +24,12 @@ public class SerivicoInicioImpl implements ServicioInicio {
 	@Override
 	public void instanciarNiveles() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void guardarPregunta(Pregunta pregunta) {
-		this.servicioInicio.guardarPregunta(pregunta);
-		
+	public void guardarPreguntaConRespuestas(Pregunta pregunta, Respuesta[] respuestas) {
+		this.servicioInicio.guardarPreguntaConSsusRespuestas(pregunta, respuestas);
 	}
 
-
-
-	
 }

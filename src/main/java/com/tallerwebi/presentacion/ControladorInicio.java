@@ -1,6 +1,7 @@
 package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.Pregunta;
+import com.tallerwebi.dominio.Respuesta;
 import com.tallerwebi.dominio.ServicioInicio;
 import com.tallerwebi.dominio.ServicioLogin;
 import com.tallerwebi.dominio.Usuario;
@@ -36,17 +37,25 @@ public class ControladorInicio {
 	public ModelAndView irACargarPregunta() {
 		ModelMap modelo = new ModelMap();
 		modelo.addAttribute("pregunta", new Pregunta());
+		modelo.addAttribute("respuestas", new Respuesta[4]); // Inicializa un array para las respuestas
 
 		return new ModelAndView("cargar-pregunta", modelo);
-
 	}
 
 	@RequestMapping(path = "/guardarPregunta", method = RequestMethod.POST)
-	public ModelAndView guardarPregunta(@ModelAttribute("pregunta") Pregunta pregunta) {
+	public ModelAndView guardarPregunta(@ModelAttribute("pregunta") Pregunta pregunta,
+			@ModelAttribute("respuestas") Respuesta[] respuestas) {
 		ModelMap model = new ModelMap();
-		servicioInicio.guardarPregunta(pregunta);
+
+		// Asigna la pregunta a cada respuesta
+		for (int i = 0; i < respuestas.length; i++) {
+			respuestas[i].setPregunta(pregunta);
+		}
+
+		// Guarda la pregunta y las respuestas
+		servicioInicio.guardarPreguntaConRespuestas(pregunta, respuestas);
 
 		return new ModelAndView("redirect:/cargar-pregunta");
-	}
 
+	}
 }

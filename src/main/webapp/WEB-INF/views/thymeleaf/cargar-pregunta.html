@@ -8,9 +8,7 @@
 <!-- Boostrap core css -->
 <link rel="stylesheet"
 	th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}" />
-
 </head>
-
 <body>
 	<header class="encabezado">
 		<h3>Patria en Juego</h3>
@@ -18,21 +16,15 @@
 			th:src="@{/src/main/webapp/resources/core/img/fondo-home.png}">
 	</header>
 	<main>
-
-
-
-
-
-
 		<h2>ARMA TU PREGUNTA</h2>
 		<form action="#" th:action="@{/guardarPregunta}" method="POST"
 			th:object="${pregunta}">
-			<!--INPUT PARA INGRESAR LA PREGUNTA-->
+			<!-- INPUT PARA INGRESAR LA PREGUNTA -->
 			<label for="descripcion">Ingresa tu pregunta <input
 				th:field="*{descripcion}" id="descripcion" required
-				placeholder="¿De qué color era el caballo blanco de San Martin?" />
+				placeholder="¿De qué color era el caballo blanco de San Martín?" />
 			</label>
-			<!--SELECCIONE LAS PREGUNTAS-->
+			<!-- SELECCIONE LAS PREGUNTAS -->
 			<label for="nivel"> <select th:field="*{nivel}" id="nivel"
 				required>
 					<option value="">Selecciona un nivel</option>
@@ -41,7 +33,7 @@
 						th:value="${provincia}" th:text="${provincia}"></option>
 			</select>
 			</label>
-			<!--SELECCIONAR FASE-->
+			<!-- SELECCIONAR FASE -->
 			<label for="fase">¿Para qué fase es tu pregunta? <select
 				th:field="*{fase}" id="fase" required>
 					<option value="1">1</option>
@@ -49,19 +41,42 @@
 					<option value="3">3</option>
 			</select>
 			</label>
-			<!--ENVIAR FORM-->
+			<!-- AGREGAR RESPUESTAS -->
+			<div>
+				<h3>Respuestas</h3>
+				<!-- Respuesta 1 -->
+				<label for="respuesta1">Respuesta 1 <input
+					th:field="*{respuestas[0].descripcion}" id="respuesta1" required />
+					<input type="radio" th:field="*{respuestas[0].esCorrecta}"
+					value="true" /> Correcta
+				</label>
+				<!-- Respuesta 2 -->
+				<label for="respuesta2">Respuesta 2 <input
+					th:field="*{respuestas[1].descripcion}" id="respuesta2" required />
+					<input type="radio" th:field="*{respuestas[1].esCorrecta}"
+					value="true" /> Correcta
+				</label>
+				<!-- Respuesta 3 -->
+				<label for="respuesta3">Respuesta 3 <input
+					th:field="*{respuestas[2].descripcion}" id="respuesta3" required />
+					<input type="radio" th:field="*{respuestas[2].esCorrecta}"
+					value="true" /> Correcta
+				</label>
+				<!-- Respuesta 4 -->
+				<label for="respuesta4">Respuesta 4 <input
+					th:field="*{respuestas[3].descripcion}" id="respuesta4" required />
+					<input type="radio" th:field="*{respuestas[3].esCorrecta}"
+					value="true" /> Correcta
+				</label>
+			</div>
+			<!-- ENVIAR FORM -->
 			<div>
 				<button class="boton" Type="Submit">Enviar mi pregunta</button>
 			</div>
 			<p th:if="${error != null}" class="mensaje_error"
 				th:text="'Error ' + ${error}"></p>
-
 		</form>
-
-		</div>
 		<a th:href="@{/home}" class="boton_de_volver">Volver</a>
-		</div>
 	</main>
-
 </body>
 </html>
