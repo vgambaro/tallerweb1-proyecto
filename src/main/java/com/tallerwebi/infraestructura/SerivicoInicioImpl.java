@@ -1,5 +1,7 @@
 package com.tallerwebi.infraestructura;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,7 @@ public class SerivicoInicioImpl implements ServicioInicio {
 	private RepositorioPregunta servicioInicio;
 
 	@Autowired
-	public SerivicoInicioImpl(RepositorioPregunta servicioNivel) {
+	public SerivicoInicioImpl(RepositorioPregunta servicioInicio) {
 		this.servicioInicio = servicioInicio;
 	}
 
@@ -28,8 +30,14 @@ public class SerivicoInicioImpl implements ServicioInicio {
 	}
 
 	@Override
-	public void guardarPreguntaConRespuestas(Pregunta pregunta, Respuesta[] respuestas) {
+	public void guardarPreguntaConRespuestas(Pregunta pregunta, List<Respuesta> respuestas) {
 		this.servicioInicio.guardarPreguntaConSsusRespuestas(pregunta, respuestas);
+	}
+
+	@Override
+	public List<Pregunta> obtenerTodasLasPreguntas() {
+		
+		return servicioInicio.getPreguntas();
 	}
 
 }

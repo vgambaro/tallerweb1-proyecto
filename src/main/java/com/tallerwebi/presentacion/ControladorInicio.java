@@ -16,6 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.ModelMap;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServletRequest;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 @Controller
 public class ControladorInicio {
@@ -32,30 +39,61 @@ public class ControladorInicio {
 
 		return new ModelAndView("inicio");
 	}
+//
+//	@RequestMapping(path = "/cargarPregunta")
+//	public ModelAndView irACargarPregunta() {
+//		ModelMap model = new ModelMap();
+//
+//		Pregunta pregunta = new Pregunta();
+//		List<Respuesta> respuestas = new ArrayList<>();
+//		for (int i = 0; i < 4; i++) {
+//			Respuesta respuesta = new Respuesta();
+//			respuesta.setPregunta(pregunta);
+//			respuestas.add(respuesta);
+//		}
+//
+//		pregunta.setRespuestas(respuestas); // Establece las respuestas en la pregunta
+//
+//		model.addAttribute("pregunta", pregunta);
+//
+//		return new ModelAndView("cargar-pregunta", model);
+//	}
 
 	@RequestMapping(path = "/cargarPregunta")
 	public ModelAndView irACargarPregunta() {
-		ModelMap modelo = new ModelMap();
-		modelo.addAttribute("pregunta", new Pregunta());
-		modelo.addAttribute("respuestas", new Respuesta[4]); // Inicializa un array para las respuestas
+	    ModelMap modelo = new ModelMap();
+	    modelo.addAttribute("pregunta", new Pregunta());
+	    modelo.addAttribute("respuestas", new ArrayList<Respuesta>()); // Inicializa una lista para las respuestas
 
-		return new ModelAndView("cargar-pregunta", modelo);
+	    return new ModelAndView("cargar-pregunta", modelo);
 	}
+
 
 	@RequestMapping(path = "/guardarPregunta", method = RequestMethod.POST)
 	public ModelAndView guardarPregunta(@ModelAttribute("pregunta") Pregunta pregunta,
-			@ModelAttribute("respuestas") Respuesta[] respuestas) {
+			@ModelAttribute("respuestas") List<Respuesta> respuestas) {
 		ModelMap model = new ModelMap();
 
 		// Asigna la pregunta a cada respuesta
-		for (int i = 0; i < respuestas.length; i++) {
-			respuestas[i].setPregunta(pregunta);
+		for (Respuesta respuesta : respuestas) {
+			respuesta.setPregunta(pregunta);
 		}
 
 		// Guarda la pregunta y las respuestas
 		servicioInicio.guardarPreguntaConRespuestas(pregunta, respuestas);
 
 		return new ModelAndView("redirect:/cargar-pregunta");
+	}
+
+	@RequestMapping(path = "/verPreguntas")
+	public ModelAndView verPreguntas() {
+		ModelMap model = new ModelMap();
+
+		List<Pregunta> preguntas = servicioInicio.obtenerTodasLasPreguntas();
+
+		model.addAttribute("preguntas", preguntas);
+
+		return new ModelAndView("ver-preguntas", model);
 
 	}
 }

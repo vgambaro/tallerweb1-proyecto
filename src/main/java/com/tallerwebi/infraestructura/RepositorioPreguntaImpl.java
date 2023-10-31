@@ -1,5 +1,7 @@
 package com.tallerwebi.infraestructura;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -24,26 +26,32 @@ public class RepositorioPreguntaImpl implements RepositorioPregunta {
 
 	@Override
 	public Pregunta buscarPregunta(Integer id) {
-		final Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		return (Pregunta) session.createCriteria(Pregunta.class).add(Restrictions.eq("id", id)).uniqueResult();
 
 	}
 
 	@Override
 	public Pregunta getPreguntaPorNivel(Nivel nivel) {
-		final Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		return (Pregunta) session.createCriteria(Pregunta.class).add(Restrictions.eq("nivel", nivel)).uniqueResult();
 	}
 
 	@Override
-	public void guardarPreguntaConSsusRespuestas(Pregunta pregunta, Respuesta[] respuestas) {
-	    Session session = sessionFactory.getCurrentSession();
+	public void guardarPreguntaConSsusRespuestas(Pregunta pregunta, List<Respuesta> respuestas) {
+		Session session = sessionFactory.getCurrentSession();
 
-	    session.save(pregunta);
+		session.save(pregunta);
 
-	    for (Respuesta r : respuestas) {
-	        session.save(r);
-	    }	
+		for (Respuesta r : respuestas) {
+			session.save(r);
+		}
 	}
 
+	@Override
+	public List<Pregunta> getPreguntas() {
+		Session session = sessionFactory.getCurrentSession();
+		List<Pregunta> preguntas = session.createQuery("FROM Pregunta", Pregunta.class).list();
+		return preguntas;
+	}
 }

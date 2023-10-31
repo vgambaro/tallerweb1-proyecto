@@ -19,18 +19,16 @@ public class Respuesta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Boolean esCorrecta;
-	private Integer idAsociado;
 	private String descripcion;
 
 	/*
-	 * INSERTABLE y UPDATABLE EN false
-	 *  PARA QUE LA COLUMNA idAsociado no SE
+	 * INSERTABLE y UPDATABLE EN false PARA QUE LA COLUMNA idAsociado no SE
 	 * MODIFIQUE DIRECTAMENTE AL PERSISTIR UNA RESPUESTA
 	 */
-	
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	private Pregunta pregunta;
 
+	@ManyToOne
+	@JoinColumn(name = "pregunta_id") // Nombre de la columna de la clave foránea en la tabla Respuesta
+	private Pregunta pregunta;
 	// Resto de los getter y setter
 
 	public Pregunta getPregunta() {
@@ -55,14 +53,6 @@ public class Respuesta {
 
 	public void setEsCorrecta(Boolean esCorrecta) {
 		this.esCorrecta = esCorrecta;
-	}
-
-	public Integer getIdAsociado() {
-		return idAsociado;
-	}
-
-	public void setIdAsociado(Integer idAsociado) {
-		this.idAsociado = idAsociado;
 	}
 
 	public String getDescripcion() {

@@ -1,8 +1,15 @@
 package com.tallerwebi.dominio;
 
-public interface RepositorioPregunta {
-Pregunta buscarPregunta(Integer id);
-Pregunta getPreguntaPorNivel(Nivel nivel);
-void guardarPreguntaConSsusRespuestas(Pregunta pregunta,Respuesta[]respuestas);
+import java.util.List;
 
+public interface RepositorioPregunta {
+	Pregunta buscarPregunta(Integer id);
+
+	Pregunta getPreguntaPorNivel(Nivel nivel);
+
+	void guardarPreguntaConSsusRespuestas(Pregunta pregunta, List<Respuesta> respuestas);
+
+	List<Pregunta> getPreguntas();
+
+	
 }
