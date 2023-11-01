@@ -32,29 +32,35 @@
 					th:value="${nivel}" th:text="${nivel}" />
 			</select>
 
-			<!-- Campo de Fase -->
+			<!-- CAMPO FASE -->
 			<label for="fase">Fase:</label> <select th:field="*{fase}" id="fase"
 				required>
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
 			</select>
-
-			<!-- Campo de Respuestas -->
-			<div th:each="respuesta, stat : ${respuestas}">
-				<label th:text="'Respuesta ' + ${stat.index + 1}">INGRESE LA RESPUESTA</label> <input
-					type="text" th:field="*{respuestas[__${stat.index}__].descripcion}"
-					required /> <input type="radio"
-					th:field="*{respuestas[__${stat.index}__].esCorrecta}" value="true" />
-				Correcta
+			<!-- CAMPO RESPUESTAS -->
+			<!-- Campo RESPUESTAS -->
+			<div th:each="respuesta, stat : ${respuestas}"
+				th:unless="${stat.index >= 4}">
+				<div class="respuesta-container">
+					<label th:text="'Respuesta ' + ${stat.index + 1}">para que
+						agregues una respuesta:</label> <input type="text"
+						th:field="*{respuestas[__${stat.index}__].descripcion}" required />
+					<input type="radio"
+						th:field="*{respuestas[__${stat.index}__].esCorrecta}"
+						value="true" /> Correcta
+				</div>
 			</div>
 
 
 
-
-			<button type="submit">Guardar Pregunta</button>
 		</form>
 		<a th:href="@{/home}" class="boton_de_volver">Volver</a>
 	</main>
+	<script src="/resources/core/js/main.js"></script>
+
+
+
 </body>
 </html>

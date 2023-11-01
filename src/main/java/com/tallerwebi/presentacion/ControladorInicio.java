@@ -59,11 +59,13 @@ public class ControladorInicio {
 //		return new ModelAndView("cargar-pregunta", model);
 //	}
 
+
+
 	@RequestMapping(path = "/cargarPregunta")
 	public ModelAndView irACargarPregunta() {
 	    ModelMap modelo = new ModelMap();
 	    modelo.addAttribute("pregunta", new Pregunta());
-	    modelo.addAttribute("respuestas", new ArrayList<Respuesta>()); // Inicializa una lista para las respuestas
+	    modelo.addAttribute("respuestas", new ArrayList<Respuesta>());
 
 	    return new ModelAndView("cargar-pregunta", modelo);
 	}
