@@ -40,25 +40,38 @@
 				<option value="3">3</option>
 			</select>
 			<!-- CAMPO RESPUESTAS -->
-			<!-- Campo RESPUESTAS -->
-			<div th:each="respuesta, stat : ${respuestas}"
-				th:unless="${stat.index >= 4}">
-				<div class="respuesta-container">
-					<label th:text="'Respuesta ' + ${stat.index + 1}">para que
-						agregues una respuesta:</label> <input type="text"
-						th:field="*{respuestas[__${stat.index}__].descripcion}" required />
-					<input type="radio"
-						th:field="*{respuestas[__${stat.index}__].esCorrecta}"
-						value="true" /> Correcta
-				</div>
-			</div>
+	
+
+<div id="respuestas-container">
+    <div class="respuesta-container">
+        <label>Respuesta 1 para que agregues una respuesta:</label>
+        <input type="text" name="respuestas[0].descripcion" required />
+        <input type="radio" name="respuestas[0].esCorrecta" value="true" /> Correcta
+    </div>
+    <div class="respuesta-container">
+        <label>Respuesta 2 para que agregues una respuesta:</label>
+        <input type="text" name="respuestas[1].descripcion" required />
+        <input type="radio" name="respuestas[1].esCorrecta" value="true" /> Correcta
+    </div>
+    <div class="respuesta-container">
+        <label>Respuesta 3 para que agregues una respuesta:</label>
+        <input type="text" name="respuestas[2].descripcion" required />
+        <input type="radio" name="respuestas[2].esCorrecta" value="true" /> Correcta
+    </div>
+    <div class="respuesta-container">
+        <label>Respuesta 4 para que agregues una respuesta:</label>
+        <input type="text" name="respuestas[3].descripcion" required />
+        <input type="radio" name="respuestas[3].esCorrecta" value="true" /> Correcta
+    </div>
+</div>
+
+
 
 
 
 		</form>
 		<a th:href="@{/home}" class="boton_de_volver">Volver</a>
 	</main>
-	<script src="/resources/core/js/main.js"></script>
 
 
 

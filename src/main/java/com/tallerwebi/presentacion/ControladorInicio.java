@@ -26,76 +26,42 @@ import java.util.ArrayList;
 
 @Controller
 public class ControladorInicio {
-	private ServicioLogin servicioLogin;
-	private ServicioInicio servicioInicio;
+    private ServicioInicio servicioInicio;
 
-	@Autowired
-	public ControladorInicio(ServicioLogin servicioLogin) {
-		this.servicioLogin = servicioLogin;
-	}
+    @Autowired
+    public ControladorInicio(ServicioInicio servicioInicio) {
+        this.servicioInicio = servicioInicio;
+    }
 
-	@RequestMapping(path = "/inicio")
-	public ModelAndView inicioLogueado() {
+    @RequestMapping(path = "/cargarPregunta")
+    public ModelAndView irACargarPregunta() {
+        ModelMap modelo = new ModelMap();
+        Pregunta pregunta = new Pregunta();
+        List<Respuesta> respuestas = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            Respuesta respuesta = new Respuesta();
+            respuestas.add(respuesta);
+        }
+        modelo.addAttribute("pregunta", pregunta);
+        modelo.addAttribute("respuestas", respuestas);
 
-		return new ModelAndView("inicio");
-	}
-//
-//	@RequestMapping(path = "/cargarPregunta")
-//	public ModelAndView irACargarPregunta() {
-//		ModelMap model = new ModelMap();
-//
-//		Pregunta pregunta = new Pregunta();
-//		List<Respuesta> respuestas = new ArrayList<>();
-//		for (int i = 0; i < 4; i++) {
-//			Respuesta respuesta = new Respuesta();
-//			respuesta.setPregunta(pregunta);
-//			respuestas.add(respuesta);
-//		}
-//
-//		pregunta.setRespuestas(respuestas); // Establece las respuestas en la pregunta
-//
-//		model.addAttribute("pregunta", pregunta);
-//
-//		return new ModelAndView("cargar-pregunta", model);
-//	}
+        return new ModelAndView("cargar-pregunta", modelo);
+    }
 
+    @RequestMapping(path = "/guardarPregunta", method = RequestMethod.POST)
+    public ModelAndView guardarPregunta(@ModelAttribute("pregunta") Pregunta pregunta,
+            @ModelAttribute("respuestas") List<Respuesta> respuestas) {
+        // Asigna la pregunta a cada respuesta
+        for (Respuesta respuesta : respuestas) {
+            respuesta.setPregunta(pregunta);
+        }
 
+        // Guarda la pregunta y las respuestas
+        servicioInicio.guardarPreguntaConRespuestas(pregunta, respuestas);
 
-	@RequestMapping(path = "/cargarPregunta")
-	public ModelAndView irACargarPregunta() {
-	    ModelMap modelo = new ModelMap();
-	    modelo.addAttribute("pregunta", new Pregunta());
-	    modelo.addAttribute("respuestas", new ArrayList<Respuesta>());
-
-	    return new ModelAndView("cargar-pregunta", modelo);
-	}
-
-
-	@RequestMapping(path = "/guardarPregunta", method = RequestMethod.POST)
-	public ModelAndView guardarPregunta(@ModelAttribute("pregunta") Pregunta pregunta,
-			@ModelAttribute("respuestas") List<Respuesta> respuestas) {
-		ModelMap model = new ModelMap();
-
-		// Asigna la pregunta a cada respuesta
-		for (Respuesta respuesta : respuestas) {
-			respuesta.setPregunta(pregunta);
-		}
-
-		// Guarda la pregunta y las respuestas
-		servicioInicio.guardarPreguntaConRespuestas(pregunta, respuestas);
-
-		return new ModelAndView("redirect:/cargar-pregunta");
-	}
-
-	@RequestMapping(path = "/verPreguntas")
-	public ModelAndView verPreguntas() {
-		ModelMap model = new ModelMap();
-
-		List<Pregunta> preguntas = servicioInicio.obtenerTodasLasPreguntas();
-
-		model.addAttribute("preguntas", preguntas);
-
-		return new ModelAndView("ver-preguntas", model);
-
-	}
+        return new ModelAndView("redirect:/cargar-pregunta");
+    }
 }
+
+
+
