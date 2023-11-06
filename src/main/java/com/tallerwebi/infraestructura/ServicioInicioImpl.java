@@ -14,12 +14,12 @@ import com.tallerwebi.dominio.ServicioInicio;
 
 @Service("servicioInicio")
 @Transactional
-public class SerivicoInicioImpl implements ServicioInicio {
+public class ServicioInicioImpl implements ServicioInicio {
 
 	private RepositorioPregunta servicioInicio;
 
 	@Autowired
-	public SerivicoInicioImpl(RepositorioPregunta servicioInicio) {
+	public ServicioInicioImpl(RepositorioPregunta servicioInicio) {
 		this.servicioInicio = servicioInicio;
 	}
 
