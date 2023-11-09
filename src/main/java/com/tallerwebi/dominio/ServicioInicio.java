@@ -11,4 +11,7 @@ public interface ServicioInicio {
 
 	ArrayList<Pregunta> obtenerTodasLasPreguntas();
 
+	void guardarPreguntaFaseUnoConSuRespuesta(PreguntaRespuestaFormFaseUno preguntaRespuestaFormFaseUno);
+
+	Pregunta obtenerPreguntaRandomDeLaFaseUno();
 }

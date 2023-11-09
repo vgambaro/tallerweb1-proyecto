@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Patria en Juego--cargar Preguntas</title>
+<title>Cargar preguntas para la fase 2 y 3</title>
 <!-- custom style -->
 <link rel="stylesheet" th:href="@{/css/cargarPreguntas.css}" />
 <!-- Boostrap core css -->
@@ -16,7 +16,7 @@
 			th:src="@{/src/main/webapp/resources/core/img/fondo-home.png}">
 	</header>
 	<main>
-		<h2>ARMA TU PREGUNTA</h2>
+		<h2>ARMA TU PREGUNTA PARA LA FASE 2 Y LA FASE 3</h2>
 		<form th:action="@{/guardarPregunta}" method="post"
 			  th:object="${preguntaRespuestaForm}" enctype="application/x-www-form-urlencoded">
 			<!-- Campo de Pregunta -->
@@ -34,9 +34,8 @@
 			<!-- Campo Fase -->
 			<label for="fase">Fase:</label>
 			<select th:field="*{pregunta.fase}" id="fase" required>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
+				<option value="1">2</option>
+				<option value="2">3</option>
 			</select>
 
 			<!-- CAMPO RESPUESTAS -->

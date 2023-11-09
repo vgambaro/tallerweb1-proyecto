@@ -13,5 +13,5 @@ public interface RepositorioPregunta {
 
 	List<Pregunta> getPreguntas();
 
-	
+	Long guardarPreguntaFaseUnoConSuRespuesta(Pregunta pregunta, Respuesta respuesta);
 }

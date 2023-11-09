@@ -54,6 +54,14 @@ public class RepositorioPreguntaImpl implements RepositorioPregunta {
 	}
 
 	@Override
+	public Long guardarPreguntaFaseUnoConSuRespuesta(Pregunta pregunta, Respuesta respuesta) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(pregunta);
+		session.save(respuesta);
+		return null;
+	}
+
+	@Override
 	public Pregunta getPreguntaPorId(Long preguntaId){
 		Session session = sessionFactory.getCurrentSession();
 		Pregunta pregunta = (Pregunta) session.createCriteria(Pregunta.class).add(Restrictions.eq("id",preguntaId)).uniqueResult();

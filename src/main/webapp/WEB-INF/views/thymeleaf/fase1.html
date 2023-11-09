@@ -20,17 +20,18 @@
     </div>
 <div class="cajita">
     <h1>ANTES DE LA BATALLA. . .</h1>
-    <form method="post" action="#" >
+    <form method="post" action="#" th:object="${preguntaRespuestaFormFaseUno}">
     <!-- th:text--FALTA PREGUNTA ACTUAL -->
-    <p th:text="${preguntaActual}">El sistema te está haciendo una pregunta</p>
+    <p>El sistema te está haciendo una pregunta</p>
+        <p th:field="*{pregunta.descripcion}"></p>
     <p>Pregunta actual para saber si vas a ganar puntitos extra</p>
     <input type="text" name="respuesta" id="respuesta">
     </form>
 </div>
 </main>
 <footer>
-    <p> Unlam--DII T2023</p>
-    <p>Gambaro,Moscovich,Pereyra,Zara</p>
+    <p>Unlam--DII T2023</p>
+    <p>Gambaro, Moscovich, Pereyra, Zara</p>
 
 </footer>
 </body>

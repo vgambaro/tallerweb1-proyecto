@@ -43,6 +43,38 @@ public class ControladorInicio {
 
         return new ModelAndView("redirect:/cargarPregunta");
     }
+
+    @RequestMapping(path = "/cargarPreguntaFaseUno")
+    public ModelAndView irACargarPreguntaFaseUno() {
+        ModelMap modelo = new ModelMap();
+        PreguntaRespuestaFormFaseUno preguntaRespuestaFormFaseUno = new PreguntaRespuestaFormFaseUno();
+        modelo.addAttribute("preguntaRespuestaFormFaseUno", preguntaRespuestaFormFaseUno);
+
+        return new ModelAndView("cargar-pregunta-fase01", modelo);
+    }
+
+    @RequestMapping(path = "/guardarPreguntasFaseUno", method = RequestMethod.POST)
+    public ModelAndView guardarPreguntaFaseUnoConSuRespuesta(@ModelAttribute("preguntaRespuestaFormFaseUno") PreguntaRespuestaFormFaseUno preguntaRespuestaFormFaseUno) {
+        ModelMap model = new ModelMap();
+        // Guarda la pregunta y la respuesta de la fase 1
+        servicioInicio.guardarPreguntaFaseUnoConSuRespuesta(preguntaRespuestaFormFaseUno);
+
+        if(preguntaRespuestaFormFaseUno.getRespuesta()==null && preguntaRespuestaFormFaseUno.getPregunta()==null) {
+            model.put("error", "Los datos no pudieron guardarse");
+        } else if(preguntaRespuestaFormFaseUno.getRespuesta()!=null && preguntaRespuestaFormFaseUno.getPregunta()!=null){
+            model.put("exito", "Los datos se guardaron correctamente");
+        }
+        return new ModelAndView("redirect:/cargarPreguntaFaseUno");
+    }
+
+    @RequestMapping(path = "/irAFaseUno")
+    public ModelAndView irAFaseUno() {
+        ModelMap modelo = new ModelMap();
+
+        return new ModelAndView("fase1", modelo);
+    }
+
+
 }
 
 

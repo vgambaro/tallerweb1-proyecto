@@ -55,4 +55,17 @@ public class ServicioInicioImpl implements ServicioInicio {
 		return (ArrayList<Pregunta>) repositorioPregunta.getPreguntas();
 	}
 
+	@Override
+	public void guardarPreguntaFaseUnoConSuRespuesta(PreguntaRespuestaFormFaseUno preguntaRespuestaFormFaseUno) {
+		Long preguntaIdGuardada = repositorioPregunta.guardarPregunta(preguntaRespuestaFormFaseUno.getPregunta());
+		Pregunta preguntaGuardada = repositorioPregunta.buscarPregunta(preguntaIdGuardada);
+
+		preguntaRespuestaFormFaseUno.getRespuesta().setPregunta(preguntaGuardada);
+	}
+
+	@Override
+	public Pregunta obtenerPreguntaRandomDeLaFaseUno() {
+		return null;
+	}
+
 }

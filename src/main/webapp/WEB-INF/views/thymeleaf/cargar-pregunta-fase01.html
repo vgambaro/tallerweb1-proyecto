@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cargar preguntas para la fase 1</title>
+    <!-- custom style -->
+    <link rel="stylesheet" th:href="@{/css/cargarPreguntas.css}" />
+    <!-- Boostrap core css -->
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}" />
+</head>
+<body>
+<main>
+    <h2>ARMA TU PREGUNTA PARA LA FASE 1</h2>
+    <form th:action="@{/guardarPreguntasFaseUno}" method="post"
+          th:object="${preguntaRespuestaFormFaseUno}" enctype="application/x-www-form-urlencoded">
+        <!-- Campo de Pregunta -->
+        <label for="descripcionPreguntaFaseUno">Pregunta:</label>
+        <input type="text" th:field="*{pregunta.descripcion}" id="descripcionPreguntaFaseUno" required />
+
+        <!-- CAMPO RESPUESTAS -->
+        <div id="respuestas-container">
+            <div class="respuesta-container">
+                <label for="descripcionRespuestaFaseUno">Agrega una respuesa numérica para la pregunta:</label>
+                <input type="number"
+                       th:field="*{respuesta.descripcion}"
+                       id="descripcionRespuestaFaseUno"
+                       required/>
+            </div>
+        </div>
+
+        <input type="submit" value="Enviar pregunta">
+        <a class="boton-batalla" th:href="@{/irAFaseUno}">Ver preguntas de la fase uno</a>
+
+    </form>
+    <p th:if="${error != null}" class="mensaje_error" th:text="'Error ' + ${error}">
+    <p th:if="${exito != null}" class="mensaje_error" th:text="'Exito ' + ${exito}">
+    <a th:href="@{/home}" class="boton_de_volver">Volver</a>
+</main>
+</body>
+</html>
