@@ -25,6 +25,9 @@ public class Pregunta {
 	private String descripcion;
 	private Nivel nivel;
 	private Integer fase;
+	@OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Respuesta> respuestas;
+
 	
 
 	public void setId(Long id) {
@@ -57,6 +60,14 @@ public class Pregunta {
 
 	public void setFase(Integer fase) {
 		this.fase = fase;
+	}
+
+	public List<Respuesta> getRespuestas() {
+		return respuestas;
+	}
+
+	public void setRespuestas(List<Respuesta> respuestas) {
+		this.respuestas = respuestas;
 	}
 
 }

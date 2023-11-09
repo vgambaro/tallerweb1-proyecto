@@ -38,12 +38,22 @@ public class RepositorioPreguntaImpl implements RepositorioPregunta {
 	}
 
 	@Override
+	public Long guardarPregunta(Pregunta pregunta) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(pregunta);
+		Long lastInsertedId = pregunta.getId();
+
+		return lastInsertedId;
+	}
+
+	@Override
 	public void guardarPreguntaConSsusRespuestas(Pregunta pregunta, List<Respuesta> respuestas) {
 		Session session = sessionFactory.getCurrentSession();
 
 		session.save(pregunta);
 
 		for (Respuesta r : respuestas) {
+			r.setPregunta(pregunta);
 			session.save(r);
 		}
 	}
@@ -53,5 +63,12 @@ public class RepositorioPreguntaImpl implements RepositorioPregunta {
 		Session session = sessionFactory.getCurrentSession();
 		List<Pregunta> preguntas = session.createQuery("FROM Pregunta", Pregunta.class).list();
 		return preguntas;
+	}
+
+	@Override
+	public Pregunta getPreguntaPorId(Long preguntaId){
+		Session session = sessionFactory.getCurrentSession();
+		Pregunta pregunta = (Pregunta) session.createCriteria(Pregunta.class).add(Restrictions.eq("id",preguntaId)).uniqueResult();
+		return pregunta;
 	}
 }

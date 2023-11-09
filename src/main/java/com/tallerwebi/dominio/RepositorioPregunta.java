@@ -7,6 +7,10 @@ public interface RepositorioPregunta {
 
 	Pregunta getPreguntaPorNivel(Nivel nivel);
 
+	Long guardarPregunta(Pregunta pregunta);
+
+	Pregunta getPreguntaPorId(Long idPregunta);
+
 	void guardarPreguntaConSsusRespuestas(Pregunta pregunta, List<Respuesta> respuestas);
 
 	List<Pregunta> getPreguntas();

@@ -20,13 +20,7 @@ public class Respuesta {
 	private Integer id;
 	private Boolean esCorrecta;
 	private String descripcion;
-
-	/*
-	 * INSERTABLE y UPDATABLE EN false PARA QUE LA COLUMNA idAsociado no SE
-	 * MODIFIQUE DIRECTAMENTE AL PERSISTIR UNA RESPUESTA
-	 */
-
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "pregunta_id") // Nombre de la columna de la clave foránea en la tabla Respuesta
 	private Pregunta pregunta;
 	// Resto de los getter y setter
