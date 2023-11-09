@@ -9,13 +9,20 @@ import com.tallerwebi.dominio.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tallerwebi.dominio.Pregunta;
+import com.tallerwebi.dominio.RepositorioPregunta;
+import com.tallerwebi.dominio.Respuesta;
+import com.tallerwebi.dominio.ServicioInicio;
+
 @Service("servicioInicio")
 @Transactional
 public class ServicioInicioImpl implements ServicioInicio {
 
 	private RepositorioPregunta repositorioPregunta;
 	private RepositorioRespuesta repositorioRespuesta;
-
 	@Autowired
 	public ServicioInicioImpl(RepositorioPregunta repositorioPregunta, RepositorioRespuesta repositorioRespuesta) {
 		this.repositorioPregunta = repositorioPregunta;
@@ -48,6 +55,13 @@ public class ServicioInicioImpl implements ServicioInicio {
 	public ArrayList<Pregunta> obtenerTodasLasPreguntas() {
 		
 		return (ArrayList<Pregunta>) repositorioPregunta.getPreguntas();
+		this.repositorioPregunta.guardarPreguntaConSsusRespuestas(pregunta, respuestas);
+	}
+
+	@Override
+	public List<Pregunta> obtenerTodasLasPreguntas() {
+
+		return repositorioPregunta.getPreguntas();
 	}
 
 }
