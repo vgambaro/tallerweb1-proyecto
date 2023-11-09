@@ -20,8 +20,8 @@ public class Respuesta {
 	private Integer id;
 	private Boolean esCorrecta;
 	private String descripcion;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "pregunta_id") // Nombre de la columna de la clave foránea en la tabla Respuesta
+	@ManyToOne
+	@JoinColumn(name = "id_pregunta") // Nombre de la columna de la clave foránea en la tabla Respuesta
 	private Pregunta pregunta;
 	// Resto de los getter y setter
 
@@ -56,5 +56,6 @@ public class Respuesta {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
 
 }

@@ -25,7 +25,7 @@ public class RepositorioPreguntaImpl implements RepositorioPregunta {
 	}
 
 	@Override
-	public Pregunta buscarPregunta(Integer id) {
+	public Pregunta buscarPregunta(Long id) {
 		Session session = sessionFactory.getCurrentSession();
 		return (Pregunta) session.createCriteria(Pregunta.class).add(Restrictions.eq("id", id)).uniqueResult();
 
@@ -44,18 +44,6 @@ public class RepositorioPreguntaImpl implements RepositorioPregunta {
 		Long lastInsertedId = pregunta.getId();
 
 		return lastInsertedId;
-	}
-
-	@Override
-	public void guardarPreguntaConSsusRespuestas(Pregunta pregunta, List<Respuesta> respuestas) {
-		Session session = sessionFactory.getCurrentSession();
-
-		session.save(pregunta);
-
-		for (Respuesta r : respuestas) {
-			r.setPregunta(pregunta);
-			session.save(r);
-		}
 	}
 
 	@Override

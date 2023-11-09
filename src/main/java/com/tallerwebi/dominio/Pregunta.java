@@ -1,5 +1,6 @@
 package com.tallerwebi.dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,21 +22,17 @@ public class Pregunta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long id_pregunta;
 	private String descripcion;
 	private Nivel nivel;
 	private Integer fase;
-	@OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Respuesta> respuestas;
-
-	
 
 	public void setId(Long id) {
-		this.id = id;
+		this.id_pregunta = id;
 	}
 
 	public Long getId() {
-		return id;
+		return id_pregunta;
 	}
 
 	public String getDescripcion() {
@@ -62,12 +59,12 @@ public class Pregunta {
 		this.fase = fase;
 	}
 
-	public List<Respuesta> getRespuestas() {
-		return respuestas;
+	public Long getId_pregunta() {
+		return id_pregunta;
 	}
 
-	public void setRespuestas(List<Respuesta> respuestas) {
-		this.respuestas = respuestas;
+	public void setId_pregunta(Long id_pregunta) {
+		this.id_pregunta = id_pregunta;
 	}
 
 }

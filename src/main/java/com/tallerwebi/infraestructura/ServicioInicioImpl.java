@@ -36,32 +36,23 @@ public class ServicioInicioImpl implements ServicioInicio {
 	}
 
 	@Override
-	public void guardarPreguntaConRespuestas(Pregunta pregunta, List<Respuesta> respuestas) {
+	public void guardarPreguntaConRespuestas(PreguntaRespuestaForm preguntaRespuestaForm) {
+		Long preguntaIdGuardada = repositorioPregunta.guardarPregunta(preguntaRespuestaForm.getPregunta());
 
-	}
+		Pregunta preguntaGuardada = repositorioPregunta.buscarPregunta(preguntaIdGuardada);
 
-	@Override
-	public void guardarPreguntaConRespuestas(Pregunta pregunta, ArrayList<Respuesta> respuestas) {
-		Long preguntaId = repositorioPregunta.guardarPregunta(pregunta);
-		Pregunta preguntaRecibida = repositorioPregunta.getPreguntaPorId(preguntaId);
-		for(Respuesta r : respuestas){
-			r.setPregunta(preguntaRecibida);
-			repositorioRespuesta.guardarRespuesta(r);
+		List<Respuesta> respuestas = preguntaRespuestaForm.getRespuestas();
+
+		for (Respuesta respuesta : respuestas) {
+			respuesta.setPregunta(preguntaGuardada); // Asigna la pregunta a cada respuesta
+			repositorioRespuesta.guardarRespuesta(respuesta);
 		}
-		//this.servicioInicio.guardarPreguntaConSsusRespuestas(pregunta, respuestas);
 	}
 
 	@Override
 	public ArrayList<Pregunta> obtenerTodasLasPreguntas() {
 		
 		return (ArrayList<Pregunta>) repositorioPregunta.getPreguntas();
-		this.repositorioPregunta.guardarPreguntaConSsusRespuestas(pregunta, respuestas);
-	}
-
-	@Override
-	public List<Pregunta> obtenerTodasLasPreguntas() {
-
-		return repositorioPregunta.getPreguntas();
 	}
 
 }

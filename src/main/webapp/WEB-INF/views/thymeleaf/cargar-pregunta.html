@@ -18,27 +18,27 @@
 	<main>
 		<h2>ARMA TU PREGUNTA</h2>
 		<form th:action="@{/guardarPregunta}" method="post"
-			th:object="${pregunta}" enctype="application/x-www-form-urlencoded">
+			  th:object="${preguntaRespuestaForm}" enctype="application/x-www-form-urlencoded">
 			<!-- Campo de Pregunta -->
-			<label for="descripcion">Pregunta:</label> <input type="text"
-				th:field="*{descripcion}" id="descripcion" required />
+			<label for="descripcion">Pregunta:</label>
+			<input type="text" th:field="*{pregunta.descripcion}" id="descripcion" required />
 
 			<!-- Campo de Nivel -->
-			<label for="nivel">Nivel:</label> <select th:field="*{nivel}"
-				id="nivel" required>
+			<label for="nivel">Nivel:</label>
+			<select th:field="*{pregunta.nivel}" id="nivel" required>
 				<option value="">Selecciona un nivel</option>
-				<option
-					th:each="nivel : ${T(com.tallerwebi.dominio.Nivel).values()}"
-					th:value="${nivel}" th:text="${nivel}" />
+				<option th:each="nivel : ${T(com.tallerwebi.dominio.Nivel).values()}"
+						th:value="${nivel}" th:text="${nivel}" />
 			</select>
 
-			<!-- CAMPO FASE -->
-			<label for="fase">Fase:</label> <select th:field="*{fase}" id="fase"
-				required>
+			<!-- Campo Fase -->
+			<label for="fase">Fase:</label>
+			<select th:field="*{pregunta.fase}" id="fase" required>
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
 			</select>
+
 			<!-- CAMPO RESPUESTAS -->
 
 
@@ -68,10 +68,6 @@
 					Correcta
 				</div>
 			</div>
-
-
-
-<button type="submit">Enviar</button>
 
 			<button type="submit">Guardar Pregunta</button>
 

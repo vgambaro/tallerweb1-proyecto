@@ -38,7 +38,6 @@ public class RepositorioRespuestasImpl implements RepositorioRespuesta {
 	@Override
 	public void guardarRespuestas(List<Respuesta> respuestas, Pregunta preguntaRecibida){
 		for (Respuesta r : respuestas){
-			r.setPregunta(preguntaRecibida);
 			sessionFactory.getCurrentSession().save(r);
 		}
 	}

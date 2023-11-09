@@ -6,9 +6,8 @@ import java.util.List;
 public interface ServicioInicio {
 	
 	void instanciarNiveles();
-	void guardarPreguntaConRespuestas(Pregunta pregunta,List<Respuesta> respuestas);
 
-	void guardarPreguntaConRespuestas(Pregunta pregunta, ArrayList<Respuesta> respuestas);
+	void guardarPreguntaConRespuestas(PreguntaRespuestaForm pregunta);
 
 	ArrayList<Pregunta> obtenerTodasLasPreguntas();
 
