@@ -33,8 +33,8 @@
         <a class="boton-batalla" th:href="@{/irAFaseUno}">Ver preguntas de la fase uno</a>
 
     </form>
-    <p th:if="${error != null}" class="mensaje_error" th:text="'Error ' + ${error}">
-    <p th:if="${exito != null}" class="mensaje_error" th:text="'Exito ' + ${exito}">
+    <p th:if="${param.error != null}" class="mensaje_error" th:text="'Error ' + ${param.error}">
+    <p th:if="${param.exito != null}" class="mensaje_exito" th:text="'Éxito ' + ${param.exito}">
     <a th:href="@{/home}" class="boton_de_volver">Volver</a>
 </main>
 </body>
