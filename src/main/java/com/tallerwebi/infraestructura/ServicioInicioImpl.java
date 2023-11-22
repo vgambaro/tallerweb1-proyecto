@@ -2,6 +2,7 @@ package com.tallerwebi.infraestructura;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.transaction.Transactional;
 
@@ -65,7 +66,16 @@ public class ServicioInicioImpl implements ServicioInicio {
 
 	@Override
 	public Pregunta obtenerPreguntaRandomDeLaFaseUno() {
-		return null;
+		ArrayList<Pregunta> preguntas = obtenerTodasLasPreguntas();
+
+		if (!preguntas.isEmpty()) {
+			Random random = new Random();
+			int indicePreguntaAleatoria = random.nextInt(preguntas.size());
+
+			return preguntas.get(indicePreguntaAleatoria);
+		}
+
+		return null; // Devolver null si no hay preguntas disponibles
 	}
 
 }

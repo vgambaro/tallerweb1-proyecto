@@ -23,6 +23,7 @@ public class ControladorInicio {
 
     @Autowired
     public ControladorInicio(ServicioInicio servicioInicio) {
+
         this.servicioInicio = servicioInicio;
     }
 
@@ -67,9 +68,15 @@ public class ControladorInicio {
         return new ModelAndView("redirect:/cargarPreguntaFaseUno");
     }
 
-    @RequestMapping(path = "/irAFaseUno")
+    @RequestMapping(path = "/fase1")
     public ModelAndView irAFaseUno() {
         ModelMap modelo = new ModelMap();
+
+        // Obtén la pregunta aleatoria
+        Pregunta pregunta = servicioInicio.obtenerPreguntaRandomDeLaFaseUno();
+
+        // Agrega la pregunta al modelo
+        modelo.addAttribute("pregunta", pregunta);
 
         return new ModelAndView("fase1", modelo);
     }
