@@ -21,6 +21,11 @@ public class Partida {
 	@OneToOne
 	private Usuario usuario;
 
+	public Partida() {
+		this.vidas = 3;
+		this.nivel = Nivel.Tierra_del_Fuego;
+	}
+
 	public Integer getId() {
 		return id;
 	}
