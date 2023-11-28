@@ -1,11 +1,13 @@
-package com.tallerwebi.infraestructura;
+package com.tallerwebi.dominio;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import com.tallerwebi.dominio.*;
+import com.tallerwebi.dominio.entities.Pregunta;
+import com.tallerwebi.dominio.entities.Respuesta;
+import com.tallerwebi.infraestructura.RepositorioPregunta;
+import com.tallerwebi.infraestructura.RepositorioRespuesta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,5 +1,7 @@
 package com.tallerwebi.dominio;
-import java.util.ArrayList;
+import com.tallerwebi.dominio.entities.Pregunta;
+import com.tallerwebi.dominio.entities.Respuesta;
+
 import java.util.List;
 
 public interface ServicioInicio {

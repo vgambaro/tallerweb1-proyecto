@@ -6,9 +6,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.tallerwebi.dominio.Pregunta;
-import com.tallerwebi.dominio.RepositorioRespuesta;
-import com.tallerwebi.dominio.Respuesta;
+import com.tallerwebi.dominio.entities.Pregunta;
+import com.tallerwebi.dominio.entities.Respuesta;
 
 import java.util.List;
 

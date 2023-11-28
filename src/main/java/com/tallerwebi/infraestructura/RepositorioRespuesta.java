@@ -1,4 +1,7 @@
-package com.tallerwebi.dominio;
+package com.tallerwebi.infraestructura;
+
+import com.tallerwebi.dominio.entities.Pregunta;
+import com.tallerwebi.dominio.entities.Respuesta;
 
 import java.util.List;
 

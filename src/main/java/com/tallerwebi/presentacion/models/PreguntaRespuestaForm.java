@@ -1,7 +1,7 @@
 package com.tallerwebi.presentacion.models;
 
-import com.tallerwebi.dominio.Pregunta;
-import com.tallerwebi.dominio.Respuesta;
+import com.tallerwebi.dominio.entities.Pregunta;
+import com.tallerwebi.dominio.entities.Respuesta;
 
 import java.util.ArrayList;
 import java.util.List;

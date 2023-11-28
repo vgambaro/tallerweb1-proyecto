@@ -4,7 +4,7 @@ import com.tallerwebi.integracion.config.HibernateTestConfig;
 import com.tallerwebi.integracion.config.SpringWebTestConfig;
 import com.tallerwebi.presentacion.ControladorLogin;
 import com.tallerwebi.dominio.ServicioLogin;
-import com.tallerwebi.dominio.Usuario;
+import com.tallerwebi.dominio.entities.Usuario;
 import com.tallerwebi.dominio.excepcion.UsuarioExistente;
 
 import org.junit.jupiter.api.BeforeEach;

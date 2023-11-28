@@ -6,9 +6,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.tallerwebi.dominio.Partida;
-import com.tallerwebi.dominio.Pregunta;
-import com.tallerwebi.dominio.RepositorioPartida;
+import com.tallerwebi.dominio.entities.Partida;
 
 @Repository("repositorioPartida")
 public class RepositorioPartidaImpl implements RepositorioPartida {

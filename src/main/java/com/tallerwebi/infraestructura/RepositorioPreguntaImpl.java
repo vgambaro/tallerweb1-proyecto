@@ -8,11 +8,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.tallerwebi.dominio.Nivel;
-import com.tallerwebi.dominio.Pregunta;
-import com.tallerwebi.dominio.RepositorioPregunta;
-import com.tallerwebi.dominio.Respuesta;
-import com.tallerwebi.dominio.Usuario;
+import com.tallerwebi.dominio.entities.Nivel;
+import com.tallerwebi.dominio.entities.Pregunta;
 
 @Repository("repositorioPregunta")
 public class RepositorioPreguntaImpl implements RepositorioPregunta {
