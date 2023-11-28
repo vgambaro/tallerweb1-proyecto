@@ -4,6 +4,10 @@
 body{
     background-color: #ceedf1;
     font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 h3{
     font-family: 'Love Ya Like A Sister', cursive;

@@ -18,6 +18,10 @@ body {
 	background-image: url("../img/fondo-home.png");
 	box-sizing: border-box;
 	/*background-color:#F89C9C;*/
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .columnas {

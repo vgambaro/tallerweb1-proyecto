@@ -17,6 +17,10 @@ body {
     background: rgb(246,126,126);
     background: linear-gradient(164deg, rgba(246,126,126,1) 13%, rgba(252,147,147,1) 57%, rgba(249,169,169,1) 97%);
     /*background-color:#F89C9C;*/
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 

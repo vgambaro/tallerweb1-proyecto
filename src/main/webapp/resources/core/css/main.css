@@ -1,5 +1,9 @@
 body {
   padding-top: 5rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .starter-template {
   padding: 3rem 1.5rem;

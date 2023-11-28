@@ -16,6 +16,10 @@ body {
     background-position: center;
     background-attachment: fixed;
     position: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 main{
     margin:auto;
