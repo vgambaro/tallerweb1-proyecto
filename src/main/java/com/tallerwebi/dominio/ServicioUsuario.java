@@ -1,7 +1,7 @@
 package com.tallerwebi.dominio;
 
 import com.tallerwebi.dominio.entities.Usuario;
-import com.tallerwebi.presentacion.DatosRegistro;
+import com.tallerwebi.presentacion.models.DatosRegistro;
 
 public interface ServicioUsuario {
 

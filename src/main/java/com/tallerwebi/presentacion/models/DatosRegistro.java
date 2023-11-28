@@ -1,4 +1,4 @@
-package com.tallerwebi.presentacion;
+package com.tallerwebi.presentacion.models;
 
 public class DatosRegistro {
 
