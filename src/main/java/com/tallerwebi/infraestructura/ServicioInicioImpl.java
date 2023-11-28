@@ -1,26 +1,25 @@
 package com.tallerwebi.infraestructura;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.tallerwebi.dominio.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.tallerwebi.dominio.Pregunta;
-import com.tallerwebi.dominio.RepositorioPregunta;
-import com.tallerwebi.dominio.Respuesta;
-import com.tallerwebi.dominio.ServicioInicio;
 
 @Service("servicioInicio")
 @Transactional
 public class ServicioInicioImpl implements ServicioInicio {
 
-	private RepositorioPregunta servicioInicio;
+	private RepositorioPregunta repositorioPregunta;
+	private RepositorioRespuesta repositorioRespuesta;
 
 	@Autowired
-	public ServicioInicioImpl(RepositorioPregunta servicioInicio) {
-		this.servicioInicio = servicioInicio;
+	public ServicioInicioImpl(RepositorioPregunta repositorioPregunta, RepositorioRespuesta repositorioRespuesta) {
+		this.repositorioPregunta = repositorioPregunta;
+		this.repositorioRespuesta = repositorioRespuesta;
 	}
 
 	@Override
@@ -31,13 +30,20 @@ public class ServicioInicioImpl implements ServicioInicio {
 
 	@Override
 	public void guardarPreguntaConRespuestas(Pregunta pregunta, List<Respuesta> respuestas) {
-		this.servicioInicio.guardarPreguntaConSsusRespuestas(pregunta, respuestas);
+		Long preguntaIdGuardada = repositorioPregunta.guardarPregunta(pregunta);
+
+		Pregunta preguntaGuardada = repositorioPregunta.buscarPregunta(preguntaIdGuardada);
+
+		for (Respuesta respuesta : respuestas) {
+			respuesta.setPregunta(preguntaGuardada); // Asigna la pregunta a cada respuesta
+			repositorioRespuesta.guardarRespuesta(respuesta);
+		}
 	}
 
 	@Override
 	public List<Pregunta> obtenerTodasLasPreguntas() {
 		
-		return servicioInicio.getPreguntas();
+		return repositorioPregunta.getPreguntas();
 	}
 
 }

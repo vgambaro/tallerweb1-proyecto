@@ -10,6 +10,8 @@ import com.tallerwebi.dominio.Pregunta;
 import com.tallerwebi.dominio.RepositorioRespuesta;
 import com.tallerwebi.dominio.Respuesta;
 
+import java.util.List;
+
 @Repository("repositorioRespuesta")
 public class RepositorioRespuestasImpl implements RepositorioRespuesta {
 
@@ -31,6 +33,13 @@ public class RepositorioRespuestasImpl implements RepositorioRespuesta {
 	public void guardarRespuesta(Respuesta respuesta) {
 		sessionFactory.getCurrentSession().save(respuesta);
 
+	}
+
+	@Override
+	public void guardarRespuestas(List<Respuesta> respuestas, Pregunta preguntaRecibida){
+		for (Respuesta r : respuestas){
+			sessionFactory.getCurrentSession().save(r);
+		}
 	}
 
 }

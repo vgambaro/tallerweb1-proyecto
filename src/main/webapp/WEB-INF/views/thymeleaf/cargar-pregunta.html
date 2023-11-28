@@ -1,83 +1,79 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Patria en Juego--cargar Preguntas</title>
-<!-- custom style -->
-<link rel="stylesheet" th:href="@{/css/cargarPreguntas.css}" />
-<!-- Boostrap core css -->
-<link rel="stylesheet"
-	th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}" />
+	<meta charset="UTF-8">
+	<title>Patria en Juego--cargar Preguntas</title>
+	<!-- custom style -->
+	<link rel="stylesheet" th:href="@{/css/cargarPreguntas.css}" />
+	<!-- Boostrap core css -->
+	<link rel="stylesheet"
+		  th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}" />
 </head>
 <body>
-	<header class="encabezado">
-		<h3>Patria en Juego</h3>
-		<img src="#" alt="pfilUser"
-			th:src="@{/src/main/webapp/resources/core/img/fondo-home.png}">
-	</header>
-	<main>
-		<h2>ARMA TU PREGUNTA</h2>
-		<form th:action="@{/guardarPregunta}" method="post"
-			th:object="${pregunta}">
-			<!-- Campo de Pregunta -->
-			<label for="descripcion">Pregunta:</label> <input type="text"
-				th:field="*{descripcion}" id="descripcion" required />
+<header class="encabezado">
+	<h3>Patria en Juego</h3>
+	<img src="#" alt="pfilUser"
+		 th:src="@{/src/main/webapp/resources/core/img/fondo-home.png}">
+</header>
+<main>
+	<h2>ARMA TU PREGUNTA</h2>
+	<form th:action="@{/guardarPregunta}" method="post"
+		  th:object="${preguntaRespuestaForm}" enctype="application/x-www-form-urlencoded">
+		<!-- Campo de Pregunta -->
+		<label for="descripcion">Pregunta:</label>
+		<input type="text" th:field="*{pregunta.descripcion}" id="descripcion" required />
 
-			<!-- Campo de Nivel -->
-			<label for="nivel">Nivel:</label> <select th:field="*{nivel}"
-				id="nivel" required>
-				<option value="">Selecciona un nivel</option>
-				<option
-					th:each="nivel : ${T(com.tallerwebi.dominio.Nivel).values()}"
+		<!-- Campo de Nivel -->
+		<label for="nivel">Nivel:</label>
+		<select th:field="*{pregunta.nivel}" id="nivel" required>
+			<option value="">Selecciona un nivel</option>
+			<option th:each="nivel : ${T(com.tallerwebi.dominio.Nivel).values()}"
 					th:value="${nivel}" th:text="${nivel}" />
-			</select>
+		</select>
 
-			<!-- CAMPO FASE -->
-			<label for="fase">Fase:</label> <select th:field="*{fase}" id="fase"
-				required>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-			</select>
-			<!-- CAMPO RESPUESTAS -->
+		<!-- Campo Fase -->
+		<label for="fase">Fase:</label>
+		<select th:field="*{pregunta.fase}" id="fase" required>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+		</select>
+
+		<!-- CAMPO RESPUESTAS -->
 
 
-			<div id="respuestas-container">
-				<div class="respuesta-container">
-					<label>Respuesta 1 para que agregues una respuesta:</label> <input
-						type="text" name="respuestas[0].descripcion" required /> <input
-						type="radio" name="respuestas[0].esCorrecta" value="true" />
-					Correcta
-				</div>
-				<div class="respuesta-container">
-					<label>Respuesta 2 para que agregues una respuesta:</label> <input
-						type="text" name="respuestas[1].descripcion" required /> <input
-						type="radio" name="respuestas[1].esCorrecta" value="true" />
-					Correcta
-				</div>
-				<div class="respuesta-container">
-					<label>Respuesta 3 para que agregues una respuesta:</label> <input
-						type="text" name="respuestas[2].descripcion" required /> <input
-						type="radio" name="respuestas[2].esCorrecta" value="true" />
-					Correcta
-				</div>
-				<div class="respuesta-container">
-					<label>Respuesta 4 para que agregues una respuesta:</label> <input
-						type="text" name="respuestas[3].descripcion" required /> <input
-						type="radio" name="respuestas[3].esCorrecta" value="true" />
-					Correcta
-				</div>
+		<div id="respuestas-container">
+			<div class="respuesta-container">
+				<label>Respuesta 1 para que agregues una respuesta:</label> <input
+					type="text" name="respuestas[0].descripcion" required /> <input
+					type="radio" name="respuestas[0].esCorrecta" value="true" />
+				Correcta
 			</div>
+			<div class="respuesta-container">
+				<label>Respuesta 2 para que agregues una respuesta:</label> <input
+					type="text" name="respuestas[1].descripcion" required /> <input
+					type="radio" name="respuestas[1].esCorrecta" value="true" />
+				Correcta
+			</div>
+			<div class="respuesta-container">
+				<label>Respuesta 3 para que agregues una respuesta:</label> <input
+					type="text" name="respuestas[2].descripcion" required /> <input
+					type="radio" name="respuestas[2].esCorrecta" value="true" />
+				Correcta
+			</div>
+			<div class="respuesta-container">
+				<label>Respuesta 4 para que agregues una respuesta:</label> <input
+					type="text" name="respuestas[3].descripcion" required /> <input
+					type="radio" name="respuestas[3].esCorrecta" value="true" />
+				Correcta
+			</div>
+		</div>
 
+		<button type="submit">Guardar Pregunta</button>
 
-
-
-
-			<button type="submit">Guardar Pregunta</button>
-
-		</form>
-		<a th:href="@{/home}" class="boton_de_volver">Volver</a>
-	</main>
+	</form>
+	<a th:href="@{/home}" class="boton_de_volver">Volver</a>
+</main>
 
 
 

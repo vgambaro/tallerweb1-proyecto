@@ -27,7 +27,7 @@ public class Respuesta {
 	 */
 
 	@ManyToOne
-	@JoinColumn(name = "pregunta_id") // Nombre de la columna de la clave foránea en la tabla Respuesta
+	@JoinColumn(name = "id_pregunta") // Nombre de la columna de la clave foránea en la tabla Respuesta
 	private Pregunta pregunta;
 	// Resto de los getter y setter
 
