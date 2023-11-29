@@ -55,9 +55,7 @@ public class RepositorioPartidaImpl implements RepositorioPartida {
 	}
 
 	@Override
-	public Partida aumentarNivel(Partida partida) {
-
-		Nivel nuevoNivel = repositorioNivel.buscarProximoNivel(partida.getNivel().getNumero());
+	public Partida aumentarNivel(Partida partida, Nivel nuevoNivel) {
 
 		partida.setNivel(nuevoNivel);
 

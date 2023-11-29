@@ -1,9 +1,6 @@
 package com.tallerwebi.dominio.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Usuario {
@@ -14,7 +11,8 @@ public class Usuario {
     private String email;
     private String password;
     private String rol;
-    private Integer nivel;
+    @ManyToOne
+    private Nivel nivel;
     private Boolean activo = false;
 
     public Long getId() {
@@ -56,11 +54,11 @@ public class Usuario {
         activo = true;
     }
 
-    public Integer  getNivel() {
-        return this.nivel;
+    public Nivel getNivel() {
+        return nivel;
     }
 
-    public void  setNivel(Integer  nuevo) {
-         this.nivel=nuevo;
+    public void setNivel(Nivel nivel) {
+        this.nivel = nivel;
     }
 }

@@ -1,5 +1,6 @@
 package com.tallerwebi.infraestructura;
 
+import com.tallerwebi.dominio.entities.Nivel;
 import com.tallerwebi.dominio.entities.Usuario;
 
 public interface RepositorioUsuario {
@@ -8,5 +9,6 @@ public interface RepositorioUsuario {
     void guardar(Usuario usuario);
     Usuario buscar(String email);
     void modificar(Usuario usuario);
+    Usuario aumentarNivel(Usuario usuario, Nivel nuevoNivel);
 }
 

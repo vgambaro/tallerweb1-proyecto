@@ -24,7 +24,7 @@
     </div>-->
     <span th:text="${respuestaEsCorrecta}"></span>
 
-    <h1>PREGUNTA <span th:text="${pregunta.getId()}"></span></h1>
+    <h1>Pregunta de <span th:text="${pregunta.getNivel().getNombre()}"></span></h1>
 
     <div class="contenedor">
         <!-- Div de la izquierda con la pregunta y respuestas -->
@@ -44,12 +44,10 @@
             </button>
         </div>
 
-        <!-- Línea vertical que divide los divs -->
         <div class="linea-vertical"></div>
 
-        <!-- Div de la derecha con la imagen -->
         <div class="imagen">
-            <img src="/img/salta.png" alt="imgSalta" th:src="@{/img/salta.png}">
+            <img alt="imgSalta" th:src="@{'/img/' + ${pregunta.getId()} + '.png'}">
         </div>
 
     </div>
@@ -64,7 +62,6 @@
 <script>
     function enviarRespuesta(elemento) {
         var respuestaId = elemento.getAttribute('data-id-respuesta');
-        console.log(respuestaId)
         document.getElementById('respuestaId').value = respuestaId;
         document.getElementById('formularioRespuesta').submit();
     }

@@ -1,5 +1,6 @@
 package com.tallerwebi.infraestructura;
 
+import com.tallerwebi.dominio.entities.Nivel;
 import com.tallerwebi.dominio.entities.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -43,5 +44,16 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
     public void modificar(Usuario usuario) {
         sessionFactory.getCurrentSession().update(usuario);
     }
+
+    @Override
+    public Usuario aumentarNivel(Usuario usuario, Nivel nuevoNivel) {
+
+        usuario.setNivel(nuevoNivel);
+
+        sessionFactory.getCurrentSession().save(usuario);
+
+        return usuario;
+    }
+
 
 }

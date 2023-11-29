@@ -1,5 +1,6 @@
 package com.tallerwebi.dominio;
 
+import com.tallerwebi.dominio.entities.Nivel;
 import com.tallerwebi.dominio.entities.Usuario;
 import com.tallerwebi.infraestructura.RepositorioUsuario;
 import com.tallerwebi.presentacion.models.DatosRegistro;
@@ -17,11 +18,15 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 
 	public void registrarUsuario(DatosRegistro datosRegistro) {
 		Usuario usuario = new Usuario();
+
 		usuario.setEmail(datosRegistro.getEmail());
 		usuario.setPassword(datosRegistro.getPassword());
 		usuario.setActivo(true);
 		usuario.setRol("usuario");
-		usuario.setNivel(1);
+
+		Nivel nivel = new Nivel();
+		nivel.setNumero(1);
+		usuario.setNivel(nivel);
 		repositorioUsuario.guardar(usuario);
 	}
 
