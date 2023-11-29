@@ -134,4 +134,12 @@ footer p{
     margin: 0 20px;
 }
 
+.respuestaCorrecta {
+    background-color: green;
+}
+
+.respuestaIncorrecta {
+    background-color: red;
+}
+
 

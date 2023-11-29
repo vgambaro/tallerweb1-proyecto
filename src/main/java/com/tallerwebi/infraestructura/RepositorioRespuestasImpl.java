@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 import com.tallerwebi.dominio.entities.Pregunta;
 import com.tallerwebi.dominio.entities.Respuesta;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Repository("repositorioRespuesta")
@@ -22,9 +25,9 @@ public class RepositorioRespuestasImpl implements RepositorioRespuesta {
 	}
 
 	@Override
-	public Respuesta buscarRespuesta(Integer idAsociado) {
+	public Respuesta buscarRespuesta(Integer id) {
 		final Session session = sessionFactory.getCurrentSession();
-		return (Respuesta) session.createCriteria(Respuesta.class).add(Restrictions.eq("idAsociado", idAsociado))
+		return (Respuesta) session.createCriteria(Respuesta.class).add(Restrictions.eq("id", id))
 				.uniqueResult();
 	}
 
@@ -40,5 +43,19 @@ public class RepositorioRespuestasImpl implements RepositorioRespuesta {
 			sessionFactory.getCurrentSession().save(r);
 		}
 	}
+
+	@Override
+	public List<Respuesta> buscarRespuestasPorPregunta(Pregunta pregunta) {
+		final Session session = sessionFactory.getCurrentSession();
+
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Respuesta> criteriaQuery = builder.createQuery(Respuesta.class);
+		Root<Respuesta> root = criteriaQuery.from(Respuesta.class);
+
+		criteriaQuery.select(root).where(builder.equal(root.get("pregunta"), pregunta));
+
+		return session.createQuery(criteriaQuery).getResultList();
+	}
+
 
 }

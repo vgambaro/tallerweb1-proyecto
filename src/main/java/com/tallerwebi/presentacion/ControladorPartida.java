@@ -1,39 +1,77 @@
 package com.tallerwebi.presentacion;
 import com.tallerwebi.dominio.ServicioPartida;
+import com.tallerwebi.dominio.ServicioPregunta;
+import com.tallerwebi.dominio.ServicioRespuesta;
+import com.tallerwebi.dominio.entities.Partida;
+import com.tallerwebi.dominio.entities.Pregunta;
+import com.tallerwebi.dominio.entities.Respuesta;
+import javassist.compiler.Parser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class ControladorPartida {
 
     private ServicioPartida servicioPartida;
+    private ServicioPregunta servicioPregunta;
+    private ServicioRespuesta servicioRespuesta;
 
     @Autowired
-    public ControladorPartida(ServicioPartida servicioPartida) {
+    public ControladorPartida(ServicioPartida servicioPartida, ServicioPregunta servicioPregunta, ServicioRespuesta servicioRespuesta) {
         this.servicioPartida = servicioPartida;
+        this.servicioPregunta = servicioPregunta;
+        this.servicioRespuesta = servicioRespuesta;
     }
 
     @RequestMapping(path = "/partida", method = RequestMethod.GET)
     public ModelAndView mostrarPartida(HttpServletRequest request) {
         String emailUsuario = request.getSession().getAttribute("EMAIL").toString();
 
-        servicioPartida.crearPartida(emailUsuario);
+        Partida partida = servicioPartida.mostrarPartida(emailUsuario);
+
+        Pregunta pregunta = servicioPregunta.obtenerPreguntaPorNivel(partida.getNivel());
+        List<Respuesta> respuestas = servicioRespuesta.obtenerRespuestasPorPregunta(pregunta);
 
         ModelMap model = new ModelMap();
 
-        model.addAttribute("pregunta", 1);
+        model.addAttribute("pregunta", pregunta);
+        model.addAttribute("respuestas", respuestas);
+        model.addAttribute("partida", partida);
 
         return new ModelAndView("partida", model);
     }
 
+    @RequestMapping(path = "/enviarRespuesta", method = RequestMethod.POST)
+    public ModelAndView enviarRespuesta(HttpServletRequest request) {
+        String respuestaId = request.getParameter("respuestaId");
 
+        String emailUsuario = request.getSession().getAttribute("EMAIL").toString();
 
+        Integer respuestaIdFormatted = Integer.parseInt(respuestaId);
+
+        Partida partida = servicioPartida.responderPregunta(respuestaIdFormatted.intValue(), emailUsuario);
+
+        Pregunta pregunta = servicioPregunta.obtenerPreguntaPorNivel(partida.getNivel());
+        List<Respuesta> respuestas = servicioRespuesta.obtenerRespuestasPorPregunta(pregunta);
+
+        ModelMap model = new ModelMap();
+
+        model.addAttribute("pregunta", pregunta);
+        model.addAttribute("respuestas", respuestas);
+        model.addAttribute("partida", partida);
+
+        return new ModelAndView("partida", model);
+    }
 
 }

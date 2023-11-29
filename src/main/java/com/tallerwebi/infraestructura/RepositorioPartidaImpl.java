@@ -1,5 +1,6 @@
 package com.tallerwebi.infraestructura;
 
+import com.tallerwebi.dominio.entities.Nivel;
 import com.tallerwebi.dominio.entities.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,9 +15,12 @@ public class RepositorioPartidaImpl implements RepositorioPartida {
 
 	private SessionFactory sessionFactory;
 
+	private RepositorioNivel repositorioNivel;
+
 	@Autowired
-	public RepositorioPartidaImpl(SessionFactory sessionFactory) {
+	public RepositorioPartidaImpl(SessionFactory sessionFactory, RepositorioNivel repositorioNivel) {
 		this.sessionFactory = sessionFactory;
+		this.repositorioNivel = repositorioNivel;
 	}
 
 	@Override
@@ -31,12 +35,46 @@ public class RepositorioPartidaImpl implements RepositorioPartida {
 	}
 
 	@Override
-	public void crearPartida(Usuario usuario) {
+	public Partida crearPartida(Usuario usuario) {
 		Partida partidaNueva = new Partida();
+		Nivel nivelUno = repositorioNivel.obtenerPrimerNivel();
 
+		partidaNueva.setNivel(nivelUno);
 		partidaNueva.setUsuario(usuario);
 
 		sessionFactory.getCurrentSession().save(partidaNueva);
+
+		return partidaNueva;
 	}
+
+	@Override
+	public Partida buscarPartidaPorUsuario(Usuario usuario) {
+		Session session = sessionFactory.getCurrentSession();
+		Partida partidaEncontrada = (Partida) session.createCriteria(Partida.class).add(Restrictions.eq("usuario", usuario)).uniqueResult();
+		return partidaEncontrada;
+	}
+
+	@Override
+	public Partida aumentarNivel(Partida partida) {
+
+		Nivel nuevoNivel = repositorioNivel.buscarProximoNivel(partida.getNivel().getNumero());
+
+		partida.setNivel(nuevoNivel);
+
+		sessionFactory.getCurrentSession().save(partida);
+
+		return partida;
+	}
+
+	@Override
+	public Partida bajarVida(Partida partida) {
+
+		partida.setVidas(partida.getVidas()-1);
+
+		sessionFactory.getCurrentSession().save(partida);
+
+		return partida;
+	}
+
 
 }

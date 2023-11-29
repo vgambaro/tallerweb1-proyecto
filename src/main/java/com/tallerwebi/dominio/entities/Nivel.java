@@ -1,9 +1,41 @@
 package com.tallerwebi.dominio.entities;
 
-public enum Nivel {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	Tierra_del_Fuego,Santa_Cruz,Chubut,Rio_Negro,La_Pampa,Neuquen,Mendoza,Buenos_Aires,CABA,
-	San_Luis,Cordoba,San_Juan,La_Rioja,Catamarca,Tucuman,Santiago_del_Estero,Santa_fe,Entre_Rios,
-	Corrientes,Misiones,Chaco,Formosa,Salta,Jujuy
-									
+@Entity
+public class Nivel {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int numero;
+
+	private String nombre;
+
+	public Nivel(int numero) {
+		this.numero = numero;
+	}
+
+	public Nivel() {
+
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 }

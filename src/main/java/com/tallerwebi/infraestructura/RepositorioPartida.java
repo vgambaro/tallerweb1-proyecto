@@ -8,5 +8,11 @@ public interface RepositorioPartida {
 
 	void guardarPartida(Partida partida);
 
-	void crearPartida(Usuario usuario);
+	Partida crearPartida(Usuario usuario);
+
+	Partida buscarPartidaPorUsuario(Usuario usuario);
+
+	Partida aumentarNivel(Partida partida);
+
+	Partida bajarVida(Partida partida);
 }

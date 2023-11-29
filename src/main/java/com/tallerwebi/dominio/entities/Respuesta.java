@@ -16,7 +16,7 @@ public class Respuesta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Boolean esCorrecta;
+	private boolean esCorrecta;
 	private String descripcion;
 
 	/*
@@ -45,11 +45,11 @@ public class Respuesta {
 		this.id = id;
 	}
 
-	public Boolean getEsCorrecta() {
+	public boolean getEsCorrecta() {
 		return esCorrecta;
 	}
 
-	public void setEsCorrecta(Boolean esCorrecta) {
+	public void setEsCorrecta(boolean esCorrecta) {
 		this.esCorrecta = esCorrecta;
 	}
 

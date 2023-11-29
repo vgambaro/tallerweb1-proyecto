@@ -1,10 +1,6 @@
 package com.tallerwebi.dominio.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Partida {
@@ -15,6 +11,7 @@ public class Partida {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Integer vidas;
+	@ManyToOne
 	private Nivel nivel;
 
 	// RELACION CON EL JUGADOR--USER
@@ -23,7 +20,6 @@ public class Partida {
 
 	public Partida() {
 		this.vidas = 3;
-		this.nivel = Nivel.Tierra_del_Fuego;
 	}
 
 	public Integer getId() {

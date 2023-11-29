@@ -11,6 +11,7 @@
 
 </head>
 <body>
+
 <header class="encabezado">
     <h3>Patria en Juego</h3>
 </header>
@@ -21,17 +22,26 @@
             <span th:text="${contador}">00:00</span>
         </p>
     </div>-->
+    <span th:text="${respuestaEsCorrecta}"></span>
 
-    <h1>PREGUNTA <span th:text="${pregunta}"></span></h1>
+    <h1>PREGUNTA <span th:text="${pregunta.getId()}"></span></h1>
 
     <div class="contenedor">
         <!-- Div de la izquierda con la pregunta y respuestas -->
         <div class="pregunta">
-            <h2 class="preguntaTexto">¿Cuál es la capital de Francia?</h2>
-            <div class="respuesta">París</div>
-            <div class="respuestaCorrecta">Londres</div>
-            <div class="respuesta">Madrid</div>
-            <div class="respuesta">Berlín</div>
+            <h2 class="preguntaTexto" th:text="${pregunta.getDescripcion()}"></h2>
+            <form id="formularioRespuesta" action="/spring/enviarRespuesta" method="post">
+                <div th:each="respuesta : ${respuestas}">
+                    <input type="hidden" id="respuestaId" name="respuestaId" th:value="${respuesta.getId()}" />
+                </div>
+            </form>
+            <button class="respuesta"
+                    th:each="respuesta : ${respuestas}"
+                    th:text="${respuesta.getDescripcion()}"
+                    th:onclick="'enviarRespuesta(this)'"
+                    th:attr="data-id-respuesta=${respuesta.getId()}"
+            >
+            </button>
         </div>
 
         <!-- Línea vertical que divide los divs -->
@@ -50,5 +60,14 @@
     <p>Gambaro,Moscovich,Pereyra,Zara</p>
 
 </footer>
+
+<script>
+    function enviarRespuesta(elemento) {
+        var respuestaId = elemento.getAttribute('data-id-respuesta');
+        console.log(respuestaId)
+        document.getElementById('respuestaId').value = respuestaId;
+        document.getElementById('formularioRespuesta').submit();
+    }
+</script>
 </body>
 </html>
