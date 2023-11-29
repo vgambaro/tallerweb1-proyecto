@@ -52,11 +52,7 @@ public class ControladorLogin {
         if (usuarioBuscado != null) {
             request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
             request.getSession().setAttribute("EMAIL", usuarioBuscado.getEmail());
-            ModelMap modelo = new ModelMap();
-
-            modelo.addAttribute("nivelActual", usuarioBuscado.getNivel().getNumero());
-
-            return new ModelAndView("inicio",modelo);
+            return new ModelAndView("redirect:/inicio");
         } else {
             model.put("error", "Usuario o clave incorrecta");
         }

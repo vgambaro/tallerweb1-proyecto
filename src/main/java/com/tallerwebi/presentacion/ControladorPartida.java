@@ -61,15 +61,18 @@ public class ControladorPartida {
         Integer respuestaIdFormatted = Integer.parseInt(respuestaId);
 
         Partida partida = servicioPartida.responderPregunta(respuestaIdFormatted.intValue(), emailUsuario);
-
         Pregunta pregunta = servicioPregunta.obtenerPreguntaPorNivel(partida.getNivel());
         List<Respuesta> respuestas = servicioRespuesta.obtenerRespuestasPorPregunta(pregunta);
 
         ModelMap model = new ModelMap();
 
+        model.addAttribute("partida", partida);
         model.addAttribute("pregunta", pregunta);
         model.addAttribute("respuestas", respuestas);
-        model.addAttribute("partida", partida);
+
+        if(partida.getVidas() == 0){
+            return new ModelAndView("perdiste", model);
+        }
 
         return new ModelAndView("partida", model);
     }
