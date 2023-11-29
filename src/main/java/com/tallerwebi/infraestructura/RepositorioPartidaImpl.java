@@ -74,5 +74,16 @@ public class RepositorioPartidaImpl implements RepositorioPartida {
 		return partida;
 	}
 
+	@Override
+	public void reiniciar(Partida partida) {
+		partida.setVidas(3);
+
+		Nivel primerNivel = new Nivel();
+		primerNivel.setNumero(1);
+		partida.setNivel(primerNivel);
+
+		sessionFactory.getCurrentSession().save(partida);
+	}
+
 
 }

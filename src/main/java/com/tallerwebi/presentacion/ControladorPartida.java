@@ -71,10 +71,24 @@ public class ControladorPartida {
         model.addAttribute("respuestas", respuestas);
 
         if(partida.getVidas() == 0){
-            return new ModelAndView("perdiste", model);
+            return new ModelAndView("redirect:/perdiste");
         }
 
         return new ModelAndView("partida", model);
+    }
+
+    @RequestMapping(path = "/perdiste")
+    public ModelAndView perdiste(HttpServletRequest request) {
+        String emailUsuario = request.getSession().getAttribute("EMAIL").toString();
+
+        Partida partida = servicioPartida.obtenerPartidaDelUsuario(emailUsuario);
+
+        ModelMap model = new ModelMap();
+        model.addAttribute("partida", partida);
+
+        servicioPartida.reiniciarPartida(emailUsuario);
+
+        return new ModelAndView("perdiste", model);
     }
 
 }

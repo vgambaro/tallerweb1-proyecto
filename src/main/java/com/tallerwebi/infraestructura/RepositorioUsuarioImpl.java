@@ -55,5 +55,12 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
         return usuario;
     }
 
+    @Override
+    public void reiniciarNivel(Usuario usuario) {
+        Nivel primerNivel = new Nivel();
+        primerNivel.setNumero(1);
+        usuario.setNivel(primerNivel);
+    }
+
 
 }

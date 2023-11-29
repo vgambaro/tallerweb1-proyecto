@@ -7,6 +7,7 @@ import com.tallerwebi.dominio.entities.Usuario;
 import com.tallerwebi.infraestructura.*;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.Part;
 import javax.transaction.Transactional;
 
 @Service("servicioPartida")
@@ -55,6 +56,23 @@ public class ServicioPartidaImpl implements ServicioPartida {
 		}
 
 		return partida;
+	}
+
+	@Override
+	public Partida obtenerPartidaDelUsuario(String email){
+		Usuario usuario = repositorioUsuario.buscar(email);
+		Partida partida = repositorioPartida.buscarPartidaPorUsuario(usuario);
+
+		return partida;
+	}
+
+	@Override
+	public void reiniciarPartida(String email) {
+		Usuario usuario = repositorioUsuario.buscar(email);
+		Partida partida = repositorioPartida.buscarPartidaPorUsuario(usuario);
+
+		repositorioUsuario.reiniciarNivel(usuario);
+		repositorioPartida.reiniciar(partida);
 	}
 
 }

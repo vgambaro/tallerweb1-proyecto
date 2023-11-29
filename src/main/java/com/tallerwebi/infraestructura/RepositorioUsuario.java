@@ -10,5 +10,6 @@ public interface RepositorioUsuario {
     Usuario buscar(String email);
     void modificar(Usuario usuario);
     Usuario aumentarNivel(Usuario usuario, Nivel nuevoNivel);
+    void reiniciarNivel(Usuario usuario);
 }
 

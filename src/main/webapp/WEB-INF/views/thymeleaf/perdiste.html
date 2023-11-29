@@ -5,7 +5,8 @@
     <title>Perdiste!!!</title>
 </head>
 <body>
-Perdiste las 3 vidas! Intentá de nuevo
+Perdiste las 3 vidas!
 <h3>Llegaste al nivel <span th:text="${partida.getNivel().getNumero()}"></span> (<span th:text="${partida.getNivel().getNombre()}"></span>)</h3>
+<a th:href="@{/inicio}">Intentá de nuevo</a>
 </body>
 </html>

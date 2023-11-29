@@ -16,4 +16,6 @@ public interface RepositorioPartida {
 	Partida aumentarNivel(Partida partida, Nivel nuevoNivel);
 
 	Partida bajarVida(Partida partida);
+
+	void reiniciar(Partida partida);
 }
