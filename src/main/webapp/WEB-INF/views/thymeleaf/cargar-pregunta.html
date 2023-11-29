@@ -23,10 +23,10 @@
 
 		<!-- Campo de Nivel -->
 		<label for="nivel">Nivel:</label>
-		<select th:field="*{pregunta.nivel}" id="nivel" required>
-			<option value="">Selecciona un nivel</option>
+		<select th:field="*{pregunta.nivel.numero}" id="nivel" required>
+			<option value="1">Selecciona un nivel</option>
 			<option th:each="nivel : ${niveles}"
-					th:value="${nivel.getNombre()}" th:text="${nivel.getNombre()}" />
+					th:value="${nivel.getNumero()}" th:text="${nivel.getNombre()}" />
 		</select>
 
 		<!-- Campo Fase -->
