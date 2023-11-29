@@ -25,8 +25,8 @@
 		<label for="nivel">Nivel:</label>
 		<select th:field="*{pregunta.nivel}" id="nivel" required>
 			<option value="">Selecciona un nivel</option>
-			<option th:each="nivel : ${T(com.tallerwebi.dominio.entities.Nivel).values()}"
-					th:value="${nivel}" th:text="${nivel}" />
+			<option th:each="nivel : ${niveles}"
+					th:value="${nivel.getNombre()}" th:text="${nivel.getNombre()}" />
 		</select>
 
 		<!-- Campo Fase -->

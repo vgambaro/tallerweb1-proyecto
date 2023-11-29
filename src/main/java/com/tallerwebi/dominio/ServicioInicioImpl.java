@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.tallerwebi.dominio.entities.Nivel;
 import com.tallerwebi.dominio.entities.Pregunta;
 import com.tallerwebi.dominio.entities.Respuesta;
+import com.tallerwebi.infraestructura.RepositorioNivel;
 import com.tallerwebi.infraestructura.RepositorioPregunta;
 import com.tallerwebi.infraestructura.RepositorioRespuesta;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +19,13 @@ public class ServicioInicioImpl implements ServicioInicio {
 
 	private RepositorioPregunta repositorioPregunta;
 	private RepositorioRespuesta repositorioRespuesta;
+	private RepositorioNivel repositorioNivel;
 
 	@Autowired
-	public ServicioInicioImpl(RepositorioPregunta repositorioPregunta, RepositorioRespuesta repositorioRespuesta) {
+	public ServicioInicioImpl(RepositorioPregunta repositorioPregunta, RepositorioRespuesta repositorioRespuesta, RepositorioNivel repositorioNivel) {
 		this.repositorioPregunta = repositorioPregunta;
 		this.repositorioRespuesta = repositorioRespuesta;
-	}
-
-	@Override
-	public void instanciarNiveles() {
-		// TODO Auto-generated method stub
-
+		this.repositorioNivel = repositorioNivel;
 	}
 
 	@Override
@@ -46,6 +44,12 @@ public class ServicioInicioImpl implements ServicioInicio {
 	public List<Pregunta> obtenerTodasLasPreguntas() {
 		
 		return repositorioPregunta.getPreguntas();
+	}
+
+	@Override
+	public List<Nivel> obtenerTodosLosNiveles() {
+		List<Nivel> niveles = repositorioNivel.obtenerTodos();
+		return niveles;
 	}
 
 }

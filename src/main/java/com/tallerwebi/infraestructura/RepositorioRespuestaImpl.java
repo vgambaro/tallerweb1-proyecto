@@ -15,12 +15,12 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Repository("repositorioRespuesta")
-public class RepositorioRespuestasImpl implements RepositorioRespuesta {
+public class RepositorioRespuestaImpl implements RepositorioRespuesta {
 
 	private SessionFactory sessionFactory;
 
 	@Autowired
-	public RepositorioRespuestasImpl(SessionFactory sessionFactory) {
+	public RepositorioRespuestaImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
