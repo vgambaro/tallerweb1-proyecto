@@ -15,6 +15,14 @@ public class Usuario {
     private Nivel nivel;
     private Boolean activo = false;
 
+    public Usuario() {
+        Nivel primerNivel = new Nivel();
+
+        primerNivel.setNumero(1);
+
+        this.nivel = primerNivel;
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,6 +1,7 @@
 package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.ServicioLogin;
+import com.tallerwebi.dominio.ServicioUsuario;
 import com.tallerwebi.dominio.entities.Usuario;
 import com.tallerwebi.dominio.excepcion.UsuarioExistente;
 import com.tallerwebi.presentacion.models.DatosLogin;
@@ -19,10 +20,12 @@ import javax.servlet.http.HttpServletRequest;
 public class ControladorLogin {
 
     private ServicioLogin servicioLogin;
+    private ServicioUsuario servicioUsuario;
 
     @Autowired
-    public ControladorLogin(ServicioLogin servicioLogin) {
+    public ControladorLogin(ServicioLogin servicioLogin, ServicioUsuario servicioUsuario) {
         this.servicioLogin = servicioLogin;
+        this.servicioUsuario = servicioUsuario;
     }
 
     @RequestMapping("/login")
@@ -49,8 +52,11 @@ public class ControladorLogin {
         if (usuarioBuscado != null) {
             request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
             request.getSession().setAttribute("EMAIL", usuarioBuscado.getEmail());
-            ModelMap modeloNivel = actualizarNivel(usuarioBuscado);
-            return new ModelAndView("inicio",modeloNivel);
+            ModelMap modelo = new ModelMap();
+
+            modelo.addAttribute("nivelActual", usuarioBuscado.getNivel().getNumero());
+
+            return new ModelAndView("inicio",modelo);
         } else {
             model.put("error", "Usuario o clave incorrecta");
         }
@@ -92,14 +98,5 @@ public class ControladorLogin {
     }
     // "/" es la raiz
 
-
-    @GetMapping("/inicio")
-    public ModelMap actualizarNivel(Usuario usuario) {
-        ModelMap model = new ModelMap();
-
-        model.addAttribute("nivelActual", servicioLogin.consultarNivelActual(usuario));
-        // Retorna la vista que utilizará Thymeleaf
-        return model;
-    }
 }
 

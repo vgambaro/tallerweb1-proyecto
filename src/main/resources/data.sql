@@ -1,31 +1,31 @@
-INSERT INTO Usuario(email, password, rol, activo) VALUES('test@unlam.edu.ar', 'test', 'ADMIN', true);
-
 
 INSERT INTO Nivel(numero, nombre) VALUES
-                              (1, 'Tierra del Fuego'),
-                              (2, 'Santa Cruz'),
-                              (3, 'Chubut'),
-                              (4, 'Rio Negro'),
-                              (5, 'La Pampa'),
-                              (6, 'Neuquen'),
-                              (7, 'Mendoza'),
-                              (8, 'Buenos Aires'),
-                              (9, 'CABA'),
-                              (10, 'San Luis'),
-                              (11, 'Cordoba'),
-                              (12, 'San Juan'),
-                              (13, 'La Rioja'),
-                              (14, 'Catamarca'),
-                              (15, 'Tucuman'),
-                              (16, 'Santiago del Estero'),
-                              (17, 'Santa Fe'),
-                              (18, 'Entre Rios'),
-                              (19, 'Corrientes'),
-                              (20, 'Misiones'),
-                              (21, 'Chaco'),
-                              (22, 'Formosa'),
-                              (23, 'Salta'),
-                              (24, 'Jujuy');
+                                      (1, 'Tierra del Fuego'),
+                                      (2, 'Santa Cruz'),
+                                      (3, 'Chubut'),
+                                      (4, 'Rio Negro'),
+                                      (5, 'La Pampa'),
+                                      (6, 'Neuquen'),
+                                      (7, 'Mendoza'),
+                                      (8, 'Buenos Aires'),
+                                      (9, 'CABA'),
+                                      (10, 'San Luis'),
+                                      (11, 'Cordoba'),
+                                      (12, 'San Juan'),
+                                      (13, 'La Rioja'),
+                                      (14, 'Catamarca'),
+                                      (15, 'Tucuman'),
+                                      (16, 'Santiago del Estero'),
+                                      (17, 'Santa Fe'),
+                                      (18, 'Entre Rios'),
+                                      (19, 'Corrientes'),
+                                      (20, 'Misiones'),
+                                      (21, 'Chaco'),
+                                      (22, 'Formosa'),
+                                      (23, 'Salta'),
+                                      (24, 'Jujuy');
+
+INSERT INTO Usuario(email, password, rol, activo, nivel_numero) VALUES('test@unlam.edu.ar', 'test', 'ADMIN', true, 1);
 
 INSERT INTO Pregunta (descripcion, fase, nivel_numero)
 VALUES

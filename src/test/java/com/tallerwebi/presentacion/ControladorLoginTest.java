@@ -1,6 +1,7 @@
 package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.ServicioLogin;
+import com.tallerwebi.dominio.ServicioUsuario;
 import com.tallerwebi.dominio.entities.Usuario;
 import com.tallerwebi.dominio.excepcion.UsuarioExistente;
 import com.tallerwebi.presentacion.models.DatosLogin;
@@ -23,6 +24,8 @@ public class ControladorLoginTest {
 	private HttpServletRequest requestMock;
 	private HttpSession sessionMock;
 	private ServicioLogin servicioLoginMock;
+	private ServicioUsuario servicioUsuarioMock;
+
 
 
 	@BeforeEach
@@ -33,7 +36,8 @@ public class ControladorLoginTest {
 		requestMock = mock(HttpServletRequest.class);
 		sessionMock = mock(HttpSession.class);
 		servicioLoginMock = mock(ServicioLogin.class);
-		controladorLogin = new ControladorLogin(servicioLoginMock);
+		servicioUsuarioMock = mock(ServicioUsuario.class);
+		controladorLogin = new ControladorLogin(servicioLoginMock, servicioUsuarioMock);
 	}
 
 	@Test

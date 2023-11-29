@@ -1,5 +1,6 @@
 package com.tallerwebi.integracion;
 
+import com.tallerwebi.dominio.ServicioUsuario;
 import com.tallerwebi.integracion.config.HibernateTestConfig;
 import com.tallerwebi.integracion.config.SpringWebTestConfig;
 import com.tallerwebi.presentacion.ControladorLogin;
@@ -42,6 +43,7 @@ public class ControladorLoginTest {
 	private ControladorLogin controladorLogin;
 	private Usuario usuarioMock;
 	private ServicioLogin servicioLogin = mock(ServicioLogin.class);
+	private ServicioUsuario servicioUsuario = mock(ServicioUsuario.class);
 	@Autowired
 	private WebApplicationContext wac;
 	private MockMvc mockMvc;
@@ -51,8 +53,7 @@ public class ControladorLoginTest {
 		usuarioMock = mock(Usuario.class);
 		when(usuarioMock.getEmail()).thenReturn("dami@unlam.com");
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
-		servicioLogin = mock(ServicioLogin.class);
-        controladorLogin = new ControladorLogin(servicioLogin);
+        controladorLogin = new ControladorLogin(servicioLogin, servicioUsuario);
 	}
 
 	@Test
