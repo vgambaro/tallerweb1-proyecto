@@ -1,11 +1,9 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.ServicioInicio;
+import com.tallerwebi.dominio.*;
 
-import com.tallerwebi.dominio.ServicioLogin;
-import com.tallerwebi.dominio.ServicioRespuesta;
-import com.tallerwebi.dominio.ServicioUsuario;
 import com.tallerwebi.dominio.entities.Nivel;
+import com.tallerwebi.dominio.entities.Partida;
 import com.tallerwebi.dominio.entities.Usuario;
 import com.tallerwebi.presentacion.models.PreguntaRespuestaForm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,37 +22,52 @@ import java.util.List;
 public class ControladorInicio {
     private ServicioInicio servicioInicio;
     private ServicioUsuario servicioUsuario;
+    private ServicioPartida servicioPartida;
 
     @Autowired
-    public ControladorInicio(ServicioInicio servicioInicio, ServicioUsuario servicioUsuario) {
+    public ControladorInicio(ServicioInicio servicioInicio, ServicioUsuario servicioUsuario, ServicioPartida servicioPartida) {
         this.servicioInicio = servicioInicio;
         this.servicioUsuario = servicioUsuario;
+        this.servicioPartida = servicioPartida;
     }
 
     @RequestMapping(path = "/inicio")
     public ModelAndView irAInicio(HttpServletRequest request) {
-        String emailUsuario = request.getSession().getAttribute("EMAIL").toString();
+        if (request.getSession().getAttribute("EMAIL") != null) {
+            String emailUsuario = request.getSession().getAttribute("EMAIL").toString();
+            Usuario usuario = servicioUsuario.buscarUsuarioPorEmail(emailUsuario);
+            Partida partida = servicioPartida.obtenerPartidaDelUsuario(emailUsuario);
 
-        Usuario usuario = servicioUsuario.buscarUsuarioPorEmail(emailUsuario);
+            ModelMap modelo = new ModelMap();
 
-        ModelMap modelo = new ModelMap();
+            modelo.addAttribute("nivelActual", usuario.getNivel().getNumero());
+            modelo.addAttribute("partida", partida);
 
-        modelo.addAttribute("nivelActual", usuario.getNivel().getNumero());
-
-        return new ModelAndView("inicio",modelo);
+            return new ModelAndView("inicio", modelo);
+        }
+        else{
+            return new ModelAndView("redirect:/home");
+        }
     }
 
     @RequestMapping(path = "/cargarPregunta")
-    public ModelAndView irACargarPregunta() {
-        ModelMap modelo = new ModelMap();
-        PreguntaRespuestaForm preguntaRespuestaForm = new PreguntaRespuestaForm();
+    public ModelAndView irACargarPregunta(HttpServletRequest request) {
+        if (request.getSession().getAttribute("EMAIL") != null) {
+            String emailUsuario = request.getSession().getAttribute("EMAIL").toString();
 
-        List<Nivel> niveles = servicioInicio.obtenerTodosLosNiveles();
+            ModelMap modelo = new ModelMap();
+            PreguntaRespuestaForm preguntaRespuestaForm = new PreguntaRespuestaForm();
 
-        modelo.addAttribute("preguntaRespuestaForm", preguntaRespuestaForm);
-        modelo.addAttribute("niveles", niveles);
+            List<Nivel> niveles = servicioInicio.obtenerTodosLosNiveles();
 
-        return new ModelAndView("cargar-pregunta", modelo);
+            modelo.addAttribute("preguntaRespuestaForm", preguntaRespuestaForm);
+            modelo.addAttribute("niveles", niveles);
+
+            return new ModelAndView("cargar-pregunta", modelo);
+        }
+        else{
+            return new ModelAndView("redirect:/home");
+        }
     }
 
     @RequestMapping(path = "/guardarPregunta", method = RequestMethod.POST)

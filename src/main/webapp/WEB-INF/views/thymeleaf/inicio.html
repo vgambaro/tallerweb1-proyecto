@@ -17,7 +17,9 @@
 
 	</header>
 	<main class="container">
-
+		<div class="vidas" th:if="${partida!=null}">
+			<h2 class="preguntaTexto"> Vidas Restantes: <span th:text="${partida.getVidas()}"></span></h2>
+		</div>
 		<section class="columnas">
 
 			<div class="caja-pr-mayor">

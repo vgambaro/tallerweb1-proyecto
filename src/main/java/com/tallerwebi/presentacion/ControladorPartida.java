@@ -36,20 +36,24 @@ public class ControladorPartida {
 
     @RequestMapping(path = "/partida", method = RequestMethod.GET)
     public ModelAndView mostrarPartida(HttpServletRequest request) {
-        String emailUsuario = request.getSession().getAttribute("EMAIL").toString();
+        if (request.getSession().getAttribute("EMAIL") != null) {
+            String emailUsuario = request.getSession().getAttribute("EMAIL").toString();
+            Partida partida = servicioPartida.mostrarPartida(emailUsuario);
 
-        Partida partida = servicioPartida.mostrarPartida(emailUsuario);
+            Pregunta pregunta = servicioPregunta.obtenerPreguntaPorNivel(partida.getNivel());
+            List<Respuesta> respuestas = servicioRespuesta.obtenerRespuestasPorPregunta(pregunta);
 
-        Pregunta pregunta = servicioPregunta.obtenerPreguntaPorNivel(partida.getNivel());
-        List<Respuesta> respuestas = servicioRespuesta.obtenerRespuestasPorPregunta(pregunta);
+            ModelMap model = new ModelMap();
 
-        ModelMap model = new ModelMap();
+            model.addAttribute("pregunta", pregunta);
+            model.addAttribute("respuestas", respuestas);
+            model.addAttribute("partida", partida);
 
-        model.addAttribute("pregunta", pregunta);
-        model.addAttribute("respuestas", respuestas);
-        model.addAttribute("partida", partida);
-
-        return new ModelAndView("partida", model);
+            return new ModelAndView("partida", model);
+        }
+        else{
+            return new ModelAndView("redirect:/home");
+        }
     }
 
     @RequestMapping(path = "/enviarRespuesta", method = RequestMethod.POST)
