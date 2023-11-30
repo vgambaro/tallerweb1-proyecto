@@ -37,11 +37,14 @@ public class ControladorInicio {
             String emailUsuario = request.getSession().getAttribute("EMAIL").toString();
             Usuario usuario = servicioUsuario.buscarUsuarioPorEmail(emailUsuario);
             Partida partida = servicioPartida.obtenerPartidaDelUsuario(emailUsuario);
+            List<Nivel> niveles = servicioInicio.obtenerTodosLosNiveles();
 
             ModelMap modelo = new ModelMap();
 
             modelo.addAttribute("nivelActual", usuario.getNivel().getNumero());
             modelo.addAttribute("partida", partida);
+            modelo.addAttribute("niveles", niveles);
+            modelo.addAttribute("provinciaActual", usuario.getNivel().getNombre());
 
             return new ModelAndView("inicio", modelo);
         }

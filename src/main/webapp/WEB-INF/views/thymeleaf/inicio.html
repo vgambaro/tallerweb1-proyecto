@@ -26,84 +26,20 @@
 
 			<div class="caja-pr-mayor">
 				<p class="titulo">LAS PROVINCIAS A CONQUISTAR :</p>
-				<div class="caja-prov">
-
-					<ul class="list-group">
-						<li class=" nivel-pintado">Tierra del Fuego</li>
-						<li
-							th:classappend="${nivelActual>= 2 ? 'nivel-pintado' : 'nivel'}">Santa
-							Cruz</li>
-						<li
-							th:classappend="${nivelActual>= 3 ? 'nivel-pintado' : 'nivel'}">Chubut</li>
-						<li
-							th:classappend="${nivelActual>= 4 ? 'nivel-pintado' : 'nivel'}">Río
-							Negro</li>
-						<li
-							th:classappend="${nivelActual>= 5 ? 'nivel-pintado' : 'nivel'}">La
-							pampa</li>
-						<li
-							th:classappend="${nivelActual>= 6 ? 'nivel-pintado' : 'nivel'}">Neuquen</li>
-						<li
-							th:classappend="${nivelActual>= 7 ? 'nivel-pintado' : 'nivel'}">Mendoza</li>
-						<li
-							th:classappend="${nivelActual>= 8 ? 'nivel-pintado' : 'nivel'}">Buenos
-							Aires</li>
-						<li
-							th:classappend="${nivelActual>= 9 ? 'nivel-pintado' : 'nivel'}">CABA</li>
-						<li
-							th:classappend="${nivelActual>= 10 ? 'nivel-pintado' : 'nivel'}">San
-							Luis</li>
-						<li
-							th:classappend="${nivelActual>= 11? 'nivel-pintado' : 'nivel'}">Córdoba</li>
-						<li
-							th:classappend="${nivelActual>= 12 ? 'nivel-pintado' : 'nivel'}">San
-							Juan</li>
-					</ul>
-
-				</div>
 				<div>
 					<ul class="list-group">
-						<li
-							th:classappend="${nivelActual>= 13 ? 'nivel-pintado' : 'nivel'}">La
-							Rioja</li>
-						<li
-							th:classappend="${nivelActual>= 14 ? 'nivel-pintado' : 'nivel'}">Catamarca</li>
-						<li
-							th:classappend="${nivelActual>= 15? 'nivel-pintado' : 'nivel'}">Tucuman</li>
-						<li
-							th:classappend="${nivelActual>= 16 ? 'nivel-pintado' : 'nivel'}">Santiago
-							del Estero</li>
-						<li
-							th:classappend="${nivelActual>= 17 ? 'nivel-pintado' : 'nivel'}">Santa
-							Fe</li>
-						<li
-							th:classappend="${nivelActual>= 18 ? 'nivel-pintado' : 'nivel'}">Entre
-							Rios</li>
-						<li
-							th:classappend="${nivelActual>= 19 ? 'nivel-pintado' : 'nivel'}">Corrientes</li>
-						<li
-							th:classappend="${nivelActual>= 20 ? 'nivel-pintado' : 'nivel'}">Misiones</li>
-						<li
-							th:classappend="${nivelActual>= 21 ? 'nivel-pintado' : 'nivel'}">Chaco</li>
-						<li
-							th:classappend="${nivelActual>= 22 ? 'nivel-pintado' : 'nivel'}">Formosa</li>
-						<li
-							th:classappend="${nivelActual>= 23 ? 'nivel-pintado' : 'nivel'}">Salta</li>
-						<li
-							th:classappend="${nivelActual>= 24 ? 'nivel-pintado' : 'nivel'}">Jujuy</li>
+						<li th:each="nivel : ${niveles}"
+							th:classappend="${nivelActual > nivel.getNumero() ? 'nivel-pintado' : 'nivel'}">
+							<span th:text="${nivel.getNombre()}"></span>
+						</li>
 					</ul>
-
 
 				</div>
 			</div>
 			<div class="contenedor-accion-juego">
 
-				<!-- USO th:text Para reemplazar el nombre
-        de la prov con el nombre de la que se está
-        jugando actualmente -->
-				<p>Actualmente estás recuperando</p>
-				<!-- th:text--FALTA LOG -->
-				<p th:text="${provinciaActual}">Tierra del Fuego</p>
+				<p>Actualmente estás Jugando:</p>
+				<p th:text="${provinciaActual}"></p>
 				<a class="boton-batalla" th:href="@{/partida}">¡Ir a la batalla!</a>
 
 				<div class="frase">

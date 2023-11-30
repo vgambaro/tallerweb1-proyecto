@@ -58,9 +58,10 @@ public class ControladorPartida {
 
     @RequestMapping(path = "/enviarRespuesta", method = RequestMethod.POST)
     public ModelAndView enviarRespuesta(HttpServletRequest request) {
-        String respuestaId = request.getParameter("respuestaId");
+        if (request.getSession().getAttribute("EMAIL") != null) {
+            String emailUsuario = request.getSession().getAttribute("EMAIL").toString();
+            String respuestaId = request.getParameter("respuestaId");
 
-        String emailUsuario = request.getSession().getAttribute("EMAIL").toString();
 
         Integer respuestaIdFormatted = Integer.parseInt(respuestaId);
 
@@ -78,21 +79,44 @@ public class ControladorPartida {
             return new ModelAndView("redirect:/perdiste");
         }
 
+        if(partida.getNivel().getNumero() == 23){
+            return new ModelAndView("redirect:/ganaste");
+        }
+
         return new ModelAndView("partida", model);
+        }else{
+            return new ModelAndView("redirect:/home");
+        }
     }
 
     @RequestMapping(path = "/perdiste")
     public ModelAndView perdiste(HttpServletRequest request) {
-        String emailUsuario = request.getSession().getAttribute("EMAIL").toString();
+        if (request.getSession().getAttribute("EMAIL") != null) {
+            String emailUsuario = request.getSession().getAttribute("EMAIL").toString();
 
-        Partida partida = servicioPartida.obtenerPartidaDelUsuario(emailUsuario);
+            Partida partida = servicioPartida.obtenerPartidaDelUsuario(emailUsuario);
 
-        ModelMap model = new ModelMap();
-        model.addAttribute("partida", partida);
+            ModelMap model = new ModelMap();
+            model.addAttribute("partida", partida);
 
-        servicioPartida.reiniciarPartida(emailUsuario);
+            servicioPartida.reiniciarPartida(emailUsuario);
 
-        return new ModelAndView("perdiste", model);
+            return new ModelAndView("perdiste", model);
+        }else{
+            return new ModelAndView("redirect:/home");
+        }
+    }
+
+    @RequestMapping(path = "/ganaste")
+    public ModelAndView ganaste(HttpServletRequest request) {
+        if (request.getSession().getAttribute("EMAIL") != null) {
+            String emailUsuario = request.getSession().getAttribute("EMAIL").toString();
+            servicioPartida.reiniciarPartida(emailUsuario);
+
+        return new ModelAndView("ganaste");
+        }else{
+            return new ModelAndView("redirect:/home");
+        }
     }
 
 }
