@@ -55,6 +55,11 @@ public class ControladorPartida {
             return new ModelAndView("redirect:/home");
         }
     }
+    @RequestMapping(path = "/enviarRespuesta", method = RequestMethod.GET)
+    public ModelAndView enviarRespuesta() {
+        return new ModelAndView("redirect:/home");
+        }
+
 
     @RequestMapping(path = "/enviarRespuesta", method = RequestMethod.POST)
     public ModelAndView enviarRespuesta(HttpServletRequest request) {
@@ -66,6 +71,11 @@ public class ControladorPartida {
         Integer respuestaIdFormatted = Integer.parseInt(respuestaId);
 
         Partida partida = servicioPartida.responderPregunta(respuestaIdFormatted.intValue(), emailUsuario);
+
+            if(partida.getNivel()== null){
+                return new ModelAndView("redirect:/ganaste");
+            }
+
         Pregunta pregunta = servicioPregunta.obtenerPreguntaPorNivel(partida.getNivel());
         List<Respuesta> respuestas = servicioRespuesta.obtenerRespuestasPorPregunta(pregunta);
 
@@ -79,9 +89,7 @@ public class ControladorPartida {
             return new ModelAndView("redirect:/perdiste");
         }
 
-        if(partida.getNivel().getNumero() == 23){
-            return new ModelAndView("redirect:/ganaste");
-        }
+
 
         return new ModelAndView("partida", model);
         }else{
