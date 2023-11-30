@@ -16,7 +16,7 @@
 <main>
 	<h2>ARMA TU PREGUNTA</h2>
 	<form th:action="@{/guardarPregunta}" method="post"
-		  th:object="${preguntaRespuestaForm}" enctype="application/x-www-form-urlencoded">
+		  th:object="${preguntaRespuestaForm}" enctype="application/x-www-form-urlencoded" accept-charset="UTF-8">
 		<!-- Campo de Pregunta -->
 		<label for="descripcion">Pregunta:</label>
 		<input type="text" th:field="*{pregunta.descripcion}" id="descripcion" required />
@@ -70,7 +70,7 @@
 		<button type="submit">Guardar Pregunta</button>
 
 	</form>
-	<a th:href="@{/home}" class="boton_de_volver">Volver</a>
+	<a th:href="@{/inicio}" class="boton_de_volver">Volver</a>
 </main>
 
 

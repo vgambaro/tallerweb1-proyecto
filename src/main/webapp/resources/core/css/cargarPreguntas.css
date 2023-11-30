@@ -18,7 +18,8 @@ body {
 	background-image: url("../img/fondo-home.png");
 	box-sizing: border-box;
 	/*background-color:#F89C9C;*/
-	min-height: 100vh;
+	min-height: 10vh;
+	padding: 0px 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -40,4 +41,20 @@ h3 {
 	font-family: 'Love Ya Like A Sister', cursive;
 	font-size: 4.375em;
 	margin: 1%;
+}
+
+.boton_de_volver {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #F89C9C;
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 10%;
+    margin-top:10px;
+}
+
+.boton_de_volver:hover{
+    background-color: #ffffff;
+    color: #F89C9C;
 }

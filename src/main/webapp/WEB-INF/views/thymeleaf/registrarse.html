@@ -22,16 +22,16 @@
             <form action="#" th:action="@{/registrarse}" method="POST" th:object="${datosRegistro}">
                 <div class="inputs">
                     <label for="email">
-                        <input th:field="*{email}" id="email" required placeholder="E-mail"/>
+                        <input th:field="*{email}" class="campos" id="email" required placeholder="E-mail"/>
                     </label>
 
                     <label for="password">
-                        <input th:field="*{password}" type="password" id="password" required
+                        <input th:field="*{password}" class="campos" type="password" id="password" required
                                placeholder="Creá tu contraseña"/>
                     </label>
 
                     <label for="password_repetida">
-                        <input th:field="*{passwordRepetida}" type="password" id="password_repetida" required
+                        <input th:field="*{passwordRepetida}" class="campos" type="password" id="password_repetida" required
                                placeholder="Repetí la contraseña"/>
                     </label>
                 </div>
