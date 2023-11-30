@@ -158,4 +158,19 @@ footer p{
     color: #F89C9C;
 }
 
+.cerrar_sesion {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    background-color: #F89C9C;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.cerrar_sesion:hover {
+    background-color: #3ECFE3;
+}
+
 
