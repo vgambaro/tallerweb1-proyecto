@@ -5,6 +5,7 @@ import com.tallerwebi.dominio.ServicioUsuario;
 import com.tallerwebi.dominio.entities.Usuario;
 import com.tallerwebi.dominio.excepcion.UsuarioExistente;
 import com.tallerwebi.presentacion.models.DatosLogin;
+import com.tallerwebi.presentacion.models.PreguntaRespuestaForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class ControladorLogin {
@@ -93,6 +95,17 @@ public class ControladorLogin {
         return new ModelAndView("redirect:/home");
     }
     // "/" es la raiz
+
+    @RequestMapping(path = "/cerrarSesion", method = RequestMethod.GET)
+    public ModelAndView cerrarSesion(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+
+        if (session != null) {
+            session.invalidate();
+        }
+
+        return new ModelAndView("redirect:/home");
+    }
 
 }
 

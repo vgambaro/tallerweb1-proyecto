@@ -14,7 +14,9 @@
 <body>
 	<header class="encabezado">
 		<h3>Patria en Juego</h3>
-
+		<div class="cerrar sesión">
+			<a th:href="@{/cerrarSesion}" class="boton-batalla">Cerrar Sesión </a>
+		</div>
 	</header>
 	<main class="container">
 		<div class="vidas" th:if="${partida!=null}">
